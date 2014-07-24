@@ -1,0 +1,364 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="themes/nexus1.1.css" />
+  	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script>
+
+	</script>
+	<style>
+	.ui-panel {
+		-webkit-box-shadow: 5px 0 5px rgba(0,0,0,.15);
+		-moz-box-shadow: 5px 0 5px rgba(0,0,0,.15);
+		box-shadow: 5px 0 5px rgba(0,0,0,.15);
+		background-color: rgba(0,0,0,.9);
+		top: 44;
+	}
+	</style>
+</head>
+<body>
+	<div data-role="page" id="home" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Nexus Mobile</h1><a href="#myPanel_1" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			<p><span id="span1"><span></p>
+			<p><span id="span2"><span></p>
+			<p><span id="span3"><span></p>
+		</div>
+		<div data-role="panel" id="myPanel_1" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="energyUse" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Energy Use Now</h1><a href="#myPanel_2" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			
+		<div data-role="collapsible">
+		   <h3>I'm a header</h3>
+		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+		</div>
+		
+		</div>
+		<div data-role="footer" data-id="foo2" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#energyUse" data-transition="pop">Energy Use</a></li>
+					<li><a href="#cost-now" data-transition="slidefade">Cost Now</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+
+		<div data-role="panel" id="myPanel_2" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="history" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>History</h1><a href="#myPanel_3" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			
+		<div data-role="collapsible" data-collapsed="false">
+		   <h3>I'm a header</h3>
+		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+		</div>
+
+		</div>
+		<div data-role="footer" data-id="foo3" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#history" data-transition="pop">History</a></li>
+					<li><a href="#history-budget" data-transition="slide">History Budget</a></li>
+					<li><a href="#history-graph" data-transition="slidedown">History Graph</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel" style="background-color: rgba(0, 0, 0, .9)" id="myPanel_3" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="smartHome" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Smart Home</h1><a href="#myPanel_4" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			
+	<div data-role="collapsible" data-collapsed="false" data-inset="false">
+		   <h3>I'm not a header</h3>
+		   <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+		</div>		
+
+		</div>
+		<div data-role="footer" data-id="foo4" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#smartHome" data-transition="fade">Smart Home</a></li>
+					<li><a href="#smart-heat" data-transition="flip">Smart Heat</a></li>
+					<li><a href="#smart-solar" data-transition="flow">Smart Solar</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel" id="myPanel_4" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="settings" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Settings</h1><a href="#myPanel_5" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+		<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+		   <h3>I'm a custom collapsible</h3>
+		   <p>Idata-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"</p>
+		</div>	
+
+		</div>
+		<div data-role="panel" id="myPanel_5" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="log_out" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Logout</h1><a href="#myPanel_6" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			
+			<a href="index.html" data-role="button" data-inline="true">Cancel</a>
+			<a href="index.html" data-role="button" data-inline="true" data-theme="a">Save</a>
+
+		</div>
+		<div data-role="panel"  id="myPanel_6" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="cost-now" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Cost Now</h1><a href="#myPanel_7" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			<div data-role="controlgroup"  data-type="horizontal">
+					<a href="index.html" data-role="button">Yes</a>
+					<a href="index.html" data-role="button">No</a>
+					<a href="index.html" data-role="button">Maybe</a>
+			</div>
+
+		</div>
+		<div data-role="footer" data-id="foo7" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#energyUse">Energy Use</a></li>
+					<li><a href="#cost-now">Cost Now</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel" id="myPanel_7" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="history-budget" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>History Budget</h1><a href="#myPanel_8" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			
+				<div data-role="controlgroup" >
+					<a href="index.html" data-role="button">Yes</a>
+					<a href="index.html" data-role="button">No</a>
+					<a href="index.html" data-role="button">Maybe</a>
+			</div>
+
+		</div>
+				<div data-role="footer" data-id="foo8" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#history" data-transition="pop">History</a></li>
+					<li><a href="#history-budget" data-transition="slide">History Budget</a></li>
+					<li><a href="#history-graph" data-transition="slidedown">History Graph</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel"  id="myPanel_8" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="history-graph" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>History Graph</h1><a href="#myPanel_9" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+		<div style="width: 100%;">
+			<img src="themes/images/cute_kitten.jpg" style="width: 100%;">
+		</div>
+
+		</div>
+				<div data-role="footer" data-id="foo9*" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#history" data-transition="pop">History</a></li>
+					<li><a href="#history-budget" data-transition="slide">History Budget</a></li>
+					<li><a href="#history-graph" data-transition="slidedown">History Graph</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel" id="myPanel_9" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	<div data-role="page" id="smart-heat" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Smart Heat</h1><a href="#myPanel_10" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+		<div style="width: 100%;">
+			<img src="themes/images/frog.jpg" style="width: 100%;">
+		</div>
+		</div>
+		<div data-role="footer" data-id="foo10" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#smartHome">Smart Home</a></li>
+					<li><a href="#smart-heat">Smart Heat</a></li>
+					<li><a href="#smart-solar">Smart Solar</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel"id="myPanel_10" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+	
+		<div data-role="page" id="smart-solar" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Smart Solar</h1><a href="#myPanel_12" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			<div data-role="controlgroup" data-type="horizontal">
+				<a  href="index" data-role="button" data-iconpos="notext" data-icon="arrow-u" data-corners="true" data-shadows="true">
+					<span class="ui-btn-inner ui-corner-left">
+						<span class="ui-btn-text">UP</span>
+						<span class="ui-icon ui-icon-arrow-u ui-icon-shadow">&nbsp;</span>
+					</span>
+				</a>
+				<a  href="index" data-role="button" data-iconpos="notext" data-icon="arrow-d" data-corners="true" data-shadows="true">
+					<span class="ui-btn-inner">
+						<span class="ui-btn-text">DOWN</span>
+						<span class="ui-icon ui-icon-arrow-d ui-icon-shadow">&nbsp;</span>
+					</span>
+				</a>
+				<a  href="index" data-role="button" data-iconpos="notext" data-icon="delete" data-corners="true" data-shadows="true">
+					<span class="ui-btn-inner ui-corner-right ui-controlgroup-last">
+						<span class="ui-btn-text">Delete</span>
+						<span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span>
+					</span>
+				</a>
+			</div>	
+
+		</div>
+		<div data-role="footer" data-id="foo12" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#smartHome">Smart Home</a></li>
+					<li><a href="#smart-heat">Smart Heat</a></li>
+					<li><a href="#smart-solar">Smart Solar</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		<div data-role="panel" id="myPanel_12" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+		<div data-role="page" id="documentation" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Documentation</h1><a href="#myPanel_13" data-icon="bars" data-iconpos="notext" class="ui-btn-right"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+		<div style="width: 100%;">
+        	<img alt="" src="themes/images/White-Cute-Puppy.jpg" style="width: 100%;">
+    	</div>
+
+		</div>
+		<div data-role="panel" style="background-color: rgba(0, 0, 0, .9)" id="myPanel_13" data-display="overlay">
+			<ul data-role="listview">
+			 	<li><a href="#energyUse">Energy Use</a></li>
+			 	<li><a href="#history">History</a></li>
+			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="#settings">Settings</a></li>
+			 	<li><a href="#log_out">log Out</a></li>
+			 </ul>
+		</div>
+	</div>
+</body>
+</html>
