@@ -7,9 +7,7 @@
   	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
-	<script>
-
-	</script>
+	
 	<style>
 	.ui-panel {
 		-webkit-box-shadow: 5px 0 5px rgba(0,0,0,.15);
@@ -18,20 +16,30 @@
 		background-color: rgba(0,0,0,.85);
 		top: 44;
 	}
+	#historyGraphBtn .ui-btn{
+		padding: .7em .8em;
+	}
 	</style>
+	<script>
+	$(function(){
+		$(document).on('swiperight', function(event, ui){
+			$('.myPanel').panel('open');
+		});	
+	});
+	</script>
 </head>
 <body>
 	<div data-role="page" id="home" data-theme="a">
 		<div data-role="header" data-position="inline">
+
 			<h1>Nexus Mobile</h1><a href="#myPanel_1" data-icon="bars" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
-
 			<div style="text-align: center; margin-top: 100px; height: 120%">
 			    <img src="themes/images/logo.png"  align="center">
 			</div>
 		</div>
-		<div data-role="panel" id="myPanel_1" data-display="overlay">
+		<div data-role="panel" id="myPanel_1" data-display="overlay" class="myPanel">
 			<ul data-role="listview">
 			 	<li><a href="#energyUse">Energy Use</a></li>
 			 	<li><a href="#history">History</a></li>
@@ -43,7 +51,9 @@
 	</div>
 	<div data-role="page" id="energyUse" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>Energy Use Now</h1><a href="#myPanel_2" data-icon="bars" data-iconpos="notext"></a>
+			<a href="#myPanel_2" data-icon="bars" data-iconpos="notext"></a>
+				<h1>Energy Use Now</h1>
+			<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 			
@@ -61,7 +71,7 @@
 			</div><!-- /navbar -->
 		</div><!-- /footer -->
 
-		<div data-role="panel" id="myPanel_2" data-display="overlay">
+		<div data-role="panel" id="myPanel_2" data-display="overlay" >
 			<ul data-role="listview">
 			 	<li><a href="#energyUse">Energy Use</a></li>
 			 	<li><a href="#history">History</a></li>
@@ -73,7 +83,7 @@
 	</div>
 	<div data-role="page" id="history" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>History</h1><a href="#myPanel_3" data-icon="bars" data-iconpos="notext"></a>
+			<a href="#myPanel_3" data-icon="bars" data-iconpos="notext"></a><h1>History</h1><a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 			
@@ -91,7 +101,7 @@
 				</ul>
 			</div><!-- /navbar -->
 		</div><!-- /footer -->
-		<div data-role="panel" style="background-color: rgba(0, 0, 0, .9)" id="myPanel_3" data-display="overlay">
+		<div data-role="panel" id="myPanel_3" data-display="overlay">
 			<ul data-role="listview">
 			 	<li><a href="#energyUse">Energy Use</a></li>
 			 	<li><a href="#history">History</a></li>
@@ -103,7 +113,9 @@
 	</div>
 	<div data-role="page" id="smartHome" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>Smart Home</h1><a href="#myPanel_4" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_4" data-icon="bars" data-iconpos="notext"></a>
+				<h1>Smart_Home</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 			
@@ -133,7 +145,9 @@
 	</div>
 	<div data-role="page" id="settings" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>Settings</h1><a href="#myPanel_5" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_5" data-icon="bars" data-iconpos="notext"></a>
+				<h1>Settings</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 		<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
@@ -142,7 +156,7 @@
 		</div>	
 
 		</div>
-		<div data-role="panel" id="myPanel_5" data-display="overlay">
+		<div data-role="panel" id="myPanel_5" data-display="overlay" > 
 			<ul data-role="listview">
 			 	<li><a href="#energyUse">Energy Use</a></li>
 			 	<li><a href="#history">History</a></li>
@@ -174,7 +188,9 @@
 	</div>
 	<div data-role="page" id="cost-now" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>Cost Now</h1><a href="#myPanel_7" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_7" data-icon="bars" data-iconpos="notext"></a>
+			<h1>Cost Now</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 			
@@ -191,7 +207,7 @@
 				</ul>
 			</div><!-- /navbar -->
 		</div><!-- /footer -->
-		<div data-role="panel" id="myPanel_7" data-display="overlay">
+		<div data-role="panel" id="myPanel_7" data-display="overlay" >
 			<ul data-role="listview">
 			 	<li><a href="#energyUse">Energy Use</a></li>
 			 	<li><a href="#history">History</a></li>
@@ -203,7 +219,9 @@
 	</div>
 	<div data-role="page" id="history-budget" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>History Budget</h1><a href="#myPanel_8" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_8" data-icon="bars" data-iconpos="notext"></a>
+				<h1>History Budget</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 			
@@ -221,7 +239,7 @@
 				</ul>
 			</div><!-- /navbar -->
 		</div><!-- /footer -->
-		<div data-role="panel"  id="myPanel_8" data-display="overlay">
+		<div data-role="panel"  id="myPanel_8" data-display="overlay" >
 			<ul data-role="listview">
 			 	<li><a href="#energyUse">Energy Use</a></li>
 			 	<li><a href="#history">History</a></li>
@@ -233,11 +251,21 @@
 	</div>
 	<div data-role="page" id="history-graph" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>History Graph</h1><a href="#myPanel_9" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_9" data-icon="bars" data-iconpos="notext"></a>
+				<h1>History Graph</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
+			<div data-role="controlgroup" data-type="horizontal" id="historyGraphBtn">
+			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Daily')">Today</a>
+			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Week')">Week</a>
+			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Month')">Month</a>
+			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Year')">Year</a>
+			</div>
+
+			<br/>
 		<div style="width: 100%;">
-			<img src="themes/images/mock_nexus/historygraph1.png" style="width: 100%;">
+			<img src="themes/images/mock_nexus/historyGraphMonth.png" id="historyImg" style="width: 100%;">
 		</div>
 
 		</div>
@@ -262,7 +290,9 @@
 	</div>
 	<div data-role="page" id="smart-heat" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>Smart Heat</h1><a href="#myPanel_10" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_10" data-icon="bars" data-iconpos="notext"></a>
+				<h1>Smart Heat</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 		<div style="width: 100%;">
@@ -291,7 +321,9 @@
 	
 		<div data-role="page" id="smart-solar" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<h1>Smart Solar</h1><a href="#myPanel_12" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_12" data-icon="bars" data-iconpos="notext"></a>
+			<h1>Smart Solar</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 		<div style="width: 100%;">
@@ -320,6 +352,9 @@
 		<div data-role="page" id="documentation" data-theme="a">
 		<div data-role="header" data-position="inline">
 			<h1>Documentation</h1><a href="#myPanel_13" data-icon="bars" data-iconpos="notext"></a>
+		<a href="#myPanel_13" data-icon="bars" data-iconpos="notext"></a>
+			<h1>Documentation</h1>
+		<a href="#home" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
 		<h2>
@@ -338,4 +373,9 @@
 		</div>
 	</div>
 </body>
+<script>
+	function historyGaphUpdate(time_period){
+		$('img#historyImg').attr("src", "themes/images/mock_nexus/historyGraph" + time_period + ".png");
+	};
+</script>
 </html>
