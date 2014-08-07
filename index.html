@@ -2,11 +2,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>jQuery Mobile: Theme Download</title>
+	<title>Nexus-mobile</title>
+	
 	<link rel="stylesheet" href="themes/nexus1.1.css" />
   	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>	
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
 	
 	<style>
 	.ui-panel {
@@ -15,9 +18,6 @@
 		box-shadow: 5px 0 5px rgba(0,0,0,.15);
 		background-color: rgba(0,0,0,.85);
 		top: 44;
-	}
-	#historyGraphBtn .ui-btn{
-		padding: .7em .8em;
 	}
 	</style>
 	<script>
@@ -41,108 +41,17 @@
 		</div>
 		<div data-role="panel" id="myPanel_1" data-display="overlay" class="myPanel">
 			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="energy-use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+			 	<li><a href="smart-home.html">Smart Home</a></li>
 			 	<li><a href="#settings">Settings</a></li>
 			 	<li><a href="#log_out">log Out</a></li>
 			 </ul>
 		</div>
 	</div>
-	<div data-role="page" id="energyUse" data-theme="a">
-		<div data-role="header" data-position="inline">
-			<a href="#myPanel_2" data-icon="bars" data-iconpos="notext"></a>
-				<h1>Energy Use Now</h1>
-			<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-			
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/current power use1.png" style="width: 100%;">
-    	</div>
-		
-		</div>
-		<div data-role="footer" data-id="foo2" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#energyUse" data-transition="pop">Energy Use</a></li>
-					<li><a href="#cost-now" data-transition="slidefade">Cost Now</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
 
-		<div data-role="panel" id="myPanel_2" data-display="overlay" >
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
-	<div data-role="page" id="history" data-theme="a">
-		<div data-role="header" data-position="inline">
-			<a href="#myPanel_3" data-icon="bars" data-iconpos="notext"></a><h1>History</h1><a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-			
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/history1.png" style="width: 100%;">
-    	</div>
+	
 
-		</div>
-		<div data-role="footer" data-id="foo3" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#history" data-transition="pop">History</a></li>
-					<li><a href="#history-budget" data-transition="slide">History Budget</a></li>
-					<li><a href="#history-graph" data-transition="slidedown">History Graph</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel" id="myPanel_3" data-display="overlay">
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
-	<div data-role="page" id="smartHome" data-theme="a">
-		<div data-role="header" data-position="inline">
-		<a href="#myPanel_4" data-icon="bars" data-iconpos="notext"></a>
-				<h1>Smart_Home</h1>
-		<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-			
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/Smart Plugs1.png" style="width: 100%;">
-    	</div>		
-
-		</div>
-		<div data-role="footer" data-id="foo4" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#smartHome" data-transition="fade">Smart Home</a></li>
-					<li><a href="#smart-heat" data-transition="flip">Smart Heat</a></li>
-					<li><a href="#smart-solar" data-transition="flow">Smart Solar</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel" id="myPanel_4" data-display="overlay">
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
 	<div data-role="page" id="settings" data-theme="a">
 		<div data-role="header" data-position="inline">
 		<a href="#myPanel_5" data-icon="bars" data-iconpos="notext"></a>
@@ -158,14 +67,14 @@
 		</div>
 		<div data-role="panel" id="myPanel_5" data-display="overlay" > 
 			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="energy-use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+			 	<li><a href="smart-home.html">Smart Home</a></li>
 			 	<li><a href="#settings">Settings</a></li>
 			 	<li><a href="#log_out">log Out</a></li>
 			 </ul>
 		</div>
-	</div>
+	</div><!-- /end of page -->
 	<div data-role="page" id="log_out" data-theme="a">
 		<div data-role="header" data-position="inline">
 			<h1>Logout</h1><a href="#myPanel_6" data-icon="bars" data-iconpos="notext"></a>
@@ -178,177 +87,18 @@
 		</div>
 		<div data-role="panel"  id="myPanel_6" data-display="overlay">
 			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="energy-use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+			 	<li><a href="smart-home.html">Smart Home</a></li>
 			 	<li><a href="#settings">Settings</a></li>
 			 	<li><a href="#log_out">log Out</a></li>
 			 </ul>
 		</div>
-	</div>
-	<div data-role="page" id="cost-now" data-theme="a">
-		<div data-role="header" data-position="inline">
-		<a href="#myPanel_7" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Cost Now</h1>
-		<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-			
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/cost now1.png" style="width: 100%;">
-    	</div>
+	</div><!-- /end of page -->
 
-		</div>
-		<div data-role="footer" data-id="foo7" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#energyUse">Energy Use</a></li>
-					<li><a href="#cost-now">Cost Now</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel" id="myPanel_7" data-display="overlay" >
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
-	<div data-role="page" id="history-budget" data-theme="a">
-		<div data-role="header" data-position="inline">
-		<a href="#myPanel_8" data-icon="bars" data-iconpos="notext"></a>
-				<h1>History Budget</h1>
-		<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-			
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/budget1.png" style="width: 100%;">
-    	</div>
-
-		</div>
-				<div data-role="footer" data-id="foo8" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#history" data-transition="pop">History</a></li>
-					<li><a href="#history-budget" data-transition="slide">History Budget</a></li>
-					<li><a href="#history-graph" data-transition="slidedown">History Graph</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel"  id="myPanel_8" data-display="overlay" >
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
-	<div data-role="page" id="history-graph" data-theme="a">
-		<div data-role="header" data-position="inline">
-		<a href="#myPanel_9" data-icon="bars" data-iconpos="notext"></a>
-				<h1>History Graph</h1>
-		<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-			<div data-role="controlgroup" data-type="horizontal" id="historyGraphBtn">
-			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Daily')">Today</a>
-			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Week')">Week</a>
-			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Month')">Month</a>
-			  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Year')">Year</a>
-			</div>
-
-			<br/>
-		<div style="width: 100%;">
-			<img src="themes/images/mock_nexus/historyGraphMonth.png" id="historyImg" style="width: 100%;">
-		</div>
-
-		</div>
-				<div data-role="footer" data-id="foo9" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#history" data-transition="pop">History</a></li>
-					<li><a href="#history-budget" data-transition="slide">History Budget</a></li>
-					<li><a href="#history-graph" data-transition="slidedown">History Graph</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel" id="myPanel_9" data-display="overlay">
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
-	<div data-role="page" id="smart-heat" data-theme="a">
-		<div data-role="header" data-position="inline">
-		<a href="#myPanel_10" data-icon="bars" data-iconpos="notext"></a>
-				<h1>Smart Heat</h1>
-		<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/Heat Pump1.png" style="width: 100%;">
-    	</div>
-		</div>
-		<div data-role="footer" data-id="foo10" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#smartHome">Smart Home</a></li>
-					<li><a href="#smart-heat">Smart Heat</a></li>
-					<li><a href="#smart-solar">Smart Solar</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel"id="myPanel_10" data-display="overlay">
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
 	
-		<div data-role="page" id="smart-solar" data-theme="a">
-		<div data-role="header" data-position="inline">
-		<a href="#myPanel_12" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Smart Solar</h1>
-		<a href="#home" data-icon="home" data-iconpos="notext"></a>
-		</div>
-		<div data-role="content" data-theme="a">
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/Solar1.png" style="width: 100%;">
-    	</div>
-		</div>
-		<div data-role="footer" data-id="foo12" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#smartHome">Smart Home</a></li>
-					<li><a href="#smart-heat">Smart Heat</a></li>
-					<li><a href="#smart-solar">Smart Solar</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-		<div data-role="panel" id="myPanel_12" data-display="overlay">
-			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
-			 	<li><a href="#settings">Settings</a></li>
-			 	<li><a href="#log_out">log Out</a></li>
-			 </ul>
-		</div>
-	</div>
+	
+
 		<div data-role="page" id="documentation" data-theme="a">
 		<div data-role="header" data-position="inline">
 			<h1>Documentation</h1><a href="#myPanel_13" data-icon="bars" data-iconpos="notext"></a>
@@ -364,18 +114,14 @@
 		</div>
 		<div data-role="panel" id="myPanel_13" data-display="overlay">
 			<ul data-role="listview">
-			 	<li><a href="#energyUse">Energy Use</a></li>
-			 	<li><a href="#history">History</a></li>
-			 	<li><a href="#smartHome">Smart Home</a></li>
+			 	<li><a href="energy-use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+			 	<li><a href="smart-home.html">Smart Home</a></li>
 			 	<li><a href="#settings">Settings</a></li>
 			 	<li><a href="#log_out">log Out</a></li>
 			 </ul>
 		</div>
-	</div>
+	</div><!-- /end of page -->
 </body>
-<script>
-	function historyGaphUpdate(time_period){
-		$('img#historyImg').attr("src", "themes/images/mock_nexus/historyGraph" + time_period + ".png");
-	};
-</script>
+
 </html>
