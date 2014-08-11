@@ -23,7 +23,7 @@
 	<script>
 	$(function(){
 		$(document).on('swiperight', function(event){
-			$('.myPanel').panel('open');
+			$('#myPanel_log_out').panel('open');
 		});	
 	});
 	</script>
@@ -31,7 +31,7 @@
 <body>
 	<div data-role="page" id="settings" data-theme="a">
 		<div data-role="header" data-position="inline">
-			<a href=".myPanel" data-icon="bars" data-iconpos="notext"></a>
+			<a href="#myPanel_log_out" data-icon="bars" data-iconpos="notext"></a>
 					<h1>Log Out</h1>
 			<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 		</div>
@@ -42,7 +42,7 @@
 			</div>	
 
 		</div>
-		<div data-role="panel" class="myPanel" data-display="overlay" > 
+		<div data-role="panel" id="myPanel_log_out" data-display="overlay" > 
 			<ul data-role="listview">
 			 	<li><a href="energy_use.html">Energy Use</a></li>
 			 	<li><a href="history.html">History</a></li>

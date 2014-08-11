@@ -24,81 +24,35 @@
 	</script>
 	</head>
 	<body>
-		
-		<div data-role="page" id="energyUse" data-theme="a">
-			
+		<div data-role="page" id="energyUse" data-theme="a">	
 			<div data-role="header" data-position="inline">
 				<a href="#myPanel_2" data-icon="bars" data-iconpos="notext"></a>
 					<h1>Energy Use Now</h1>
 				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 			</div>
-		<div data-role="content" data-theme="a">
-				
-			<div style="width: 100%;">
-	        	<img alt="" src="themes/images/mock_nexus/current power use1.png" style="width: 100%;">
-	    	</div>
-			
-		</div>
-			
-			<div data-role="footer" data-id="foo2" data-position="fixed">
-				
+			<div data-role="content" data-theme="a">
+				<div style="width: 100%;">
+			        <img alt="" src="themes/images/mock_nexus/current power use1.png" style="width: 100%;">
+			    </div>	
+			</div>		
+			<div data-role="footer" data-id="foo2" data-position="fixed">		
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#energyUse" data-transition="pop" class="ui-btn-active  ui-state-persist">Energy Use</a></li>
-						<li><a href="#cost-then" data-transition="slidefade">Cost Now</a></li>
+						<li><a href="#" class="ui-btn-active  ui-state-persist">Energy Use</a></li>
+						<li><a href="cost_now.html" data-transition="slide">Cost Now</a></li>
 					</ul>
-				
-				</div><!-- /navbar -->
-			
+				</div><!-- /navbar -->	
 			</div><!-- /footer -->
-	
 			<div data-role="panel" id="myPanel_2" data-display="overlay" >
 				<ul data-role="listview">
-				 	<li><a href="#energyUse">Energy Use</a></li>
+				 	<li><a href="#">Energy Use</a></li>
 				 	<li><a href="history.html">History</a></li>
-				 	<li><a href="smart-home.html">Smart Home</a></li>
-				 	<li><a href="index.html#settings">Settings</a></li>
-				 	<li><a href="index.html#log_out">log Out</a></li>
+				 	<li><a href="smart_home.html">Smart Home</a></li>
+				 	<li><a href="settings.html">Settings</a></li>
+				 	<li><a href="log_out.html">Log Out</a></li>
 				 </ul>
 			</div>
-			
-		</div><!-- /end of page -->
-	
-		<div data-role="page" id="cost-then" data-theme="a">
-			
-			<div data-role="header" data-position="inline">
-				<a href="#myPanel_7" data-icon="bars" data-iconpos="notext"></a>
-					<h1>Cost Now</h1>
-				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
-			</div>
-			
-			<div data-role="content" data-theme="a">
-				
-				<div style="width: 100%;">
-		        	<img alt="" src="themes/images/mock_nexus/cost now1.png" style="width: 100%;">
-		    	</div>
-	
-			</div>
-			<div data-role="footer" data-id="foo7" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li><a href="#energyUse">Energy Use</a></li>
-						<li><a href="#cost-now" class="ui-btn-active  ui-state-persist">Cost Now</a></li>
-					</ul>
-				</div><!-- /navbar -->
-			</div><!-- /footer -->
-			
-			<div data-role="panel" id="myPanel_7" data-display="overlay" >
-				<ul data-role="listview">
-				 	<li><a href="#cost-now">Energy Use</a></li>
-				 	<li><a href="history.html">History</a></li>
-				 	<li><a href="smart-home.html">Smart Home</a></li>
-				 	<li><a href="#settings">Settings</a></li>
-				 	<li><a href="#log_out">log Out</a></li>
-				 </ul>
-			
-			</div>
-			
+					
 		</div><!-- /end of page -->
 	</body>
 </html>
