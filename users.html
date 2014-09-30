@@ -35,8 +35,22 @@
 				 </ul>
 			</div>
 		<script>
-	$(function(){
-		
+		$('#users').on('swipeleft swiperight', function (event) {
+			
+			 if(event.type == 'swiperight') {
+			 $.mobile.changePage('register.html', {
+			   transition: 'slide',
+			   reverse: true
+			  });
+			 }
+			
+			 if(event.type == 'swipeleft') {
+			  $.mobile.changePage('register.html', {
+			   transition: 'slide',
+			   reverse: false
+			  });
+			 }
+		});
 		
 	/*AJAX Get users*/
 		function list_users(){
@@ -58,24 +72,9 @@
 		list_users();
 		
 		/* Swipe Event*/
-		$('#users').on('swipeleft swiperight', function (event) {
-			
-			 if(event.type == 'swiperight') {
-			 $.mobile.changePage('register.html', {
-			   transition: 'slide',
-			   reverse: true
-			  });
-			 }
-			
-			 if(event.type == 'swipeleft') {
-			  $.mobile.changePage('register.html', {
-			   transition: 'slide',
-			   reverse: false
-			  });
-			 }
-		});
 
-	});
+
+
 		</script>
 
 		</div><!-- /end of page -->
