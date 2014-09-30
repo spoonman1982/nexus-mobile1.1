@@ -19,25 +19,63 @@
 
 		
 		<div data-role="page" id="history-graph" data-theme="a">
-			<div data-role="header" data-position="inline">
-			<a href="#myPanel_9" data-icon="bars" data-iconpos="notext"></a>
-					<h1>History Graph</h1>
-			<a href="index.html" data-icon="home" data-iconpos="notext"></a>
-			</div>
-			<div data-role="content" data-theme="a">
-				<div data-role="controlgroup" data-type="horizontal" id="historyGraphBtn">
-				  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Daily')">Today</a>
-				  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Week')">Week</a>
-				  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Month')">Month</a>
-				  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Year')">Year</a>
+				<div data-role="header" data-position="inline">
+				<a href="#myPanel_9" data-icon="bars" data-iconpos="notext"></a>
+						<h1>History Graph</h1>
+				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 				</div>
-	
-				<br/>
-			<div style="width: 100%;">
-				<img src="themes/images/mock_nexus/historyGraphMonth.png" id="historyImg" style="width: 100%;">
-			</div>
-	
-			</div>
+				<div data-role="content" data-theme="a">
+					<div data-role="controlgroup" data-type="horizontal" id="historyGraphBtn">
+					  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Daily')">Today</a>
+					  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Week')">Week</a>
+					  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Month')">Month</a>
+					  <a href="#" class="ui-btn ui-corner-all" onclick="historyGaphUpdate('Year')">Year</a>
+					</div>
+		
+					<br/>
+					<div style="width: 100%;">
+						<div id="today_history_prices" class="prices_chart" style="min-width: 300px"> </div>
+					</div>
+				<script>
+					$(function () {
+					    $('#today_history_prices').highcharts({
+	       					chart: {
+            					type: 'column'
+        					},
+					        title: {
+					            text: 'Monthly Average Temperature',
+					            x: -20 //center
+					        },
+					        subtitle: {
+					            text: 'Source: WorldClimate.com',
+					            x: -20
+					        },
+					        xAxis: {
+					            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+					                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+					        },
+					        yAxis: {
+					            title: {
+					                text: 'Temperature (°C)'
+					            },
+					            plotLines: [{
+					                value: 0,
+					                width: 1,
+					                color: '#808080'
+					            }]
+					        },
+					        tooltip: {
+					            valueSuffix: '°C'
+					        },
+					        series: [{
+					            name: 'Tokyo',
+					            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+					        }],
+					    });
+					});
+					
+				</script>
+				</div>
 					<div data-role="footer" data-id="foo9" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
@@ -53,6 +91,7 @@
 				 	<li><a href="history.html">History</a></li>
 				 	<li><a href="smart_home.html">Smart Home</a></li>
 				 	<li><a href="settings.html">Settings</a></li>
+				 	<li><a href="register.html">Register</a></li>
 				 	<li><a href="log_out.html">log Out</a></li>
 				 </ul>
 			</div>
