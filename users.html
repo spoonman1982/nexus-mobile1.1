@@ -58,11 +58,21 @@
 		list_users();
 		
 		/* Swipe Event*/
-		$('#users').on('swiperight', function (event) {
-			$.mobile.changePage('register.html', {
-				transition: 'slide',
-				reverse: true
-			});	 
+		$('#users').on('swipeleft swiperight', function (event) {
+			
+			 if(event.type == 'swiperight') {
+			 $.mobile.changePage('register.html', {
+			   transition: 'slide',
+			   reverse: true
+			  });
+			 }
+			
+			 if(event.type == 'swipeleft') {
+			  $.mobile.changePage('register.html', {
+			   transition: 'slide',
+			   reverse: false
+			  });
+			 }
 		});
 
 	});

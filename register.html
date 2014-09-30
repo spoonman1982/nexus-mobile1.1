@@ -103,14 +103,32 @@
 			
 	/*Swipe Event*/
 	
-	$('#register').on('swipeleft', function (event) {	
+/*		$('#register').swipe({
+			swipe:function(event){
+				$.mobile.changePage('users.html', {
+					transition: 'slide',
+					reverse: true
+				});	 	
+			},
+		});*/
+	
+		$('#register').on('swipeleft swiperight', function (event) {
+			
+			 if(event.type == 'swiperight') {
+			 $.mobile.changePage('users.html', {
+			   transition: 'slide',
+			   reverse: true
+			  });
+			 }
+			
+			 if(event.type == 'swipeleft') {
+			  $.mobile.changePage('users.html', {
+			   transition: 'slide',
+			   reverse: false
+			  });
+			 }
+		});
 		
-		  $.mobile.changePage('users.html', {
-		   transition: 'slide',
-		   reverse: false
-		  });
-		 
-	});
 		</script>
 
 		</div><!-- /end of page -->
