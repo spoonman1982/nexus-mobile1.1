@@ -103,18 +103,13 @@
 			
 	/*Swipe Event*/
 	
-	$('#register').on('swipeleft swiperight', function (event) {
+	$('#register').on('swipeleft', function (event) {	
 		
-		 if(event.type == 'swiperight') {
-				$('#myPanel_register').panel('open');
-		 }
-		
-		 if(event.type == 'swipeleft') {
 		  $.mobile.changePage('users.html', {
 		   transition: 'slide',
 		   reverse: false
 		  });
-		 }
+		 
 	});
 		</script>
 
