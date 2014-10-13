@@ -1,6 +1,4 @@
-	<body>
-	
-		<div data-role="page" id="costNow" data-theme="a">
+<div data-role="page" id="costNow" data-theme="a">
 			
 			<div data-role="header" data-position="inline">
 				<a href="#myPanel_costNow" data-icon="bars" data-iconpos="notext"></a>
@@ -8,11 +6,29 @@
 				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 			</div>
 			
+			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
+				<li data-role="list-divider"> Cost Viewer </li>
+				<li style='background: #f3f3f3;'>
+				<div style="max-width:300px; margin: auto;">
+					<h3 style="line-height: 1.3em; font-size: 20px; font-family: Helvetica; color: #4D4D4D; text-align: center;">Spend Now</h3>
+					<div id="spending_now_container" style="max-width:300px; height: 130px; margin: 10px auto; position:relative">
+						<img alt="euro icon" src="themes/images/euro_icon.png" style="top:15; left:10; width:55px; height:120px; position: absolute;">
+						<span style="height: 20px; letter-spacing: 0; color:#66aad7; font-size: 2.7em;
+	position:absolute; top:35; left:90; font-family: arial; font-weight: bolder;"> 3.17/hr </span>
+					</div>
+					<div style="max-width:300px; margin: auto;">
+						<h3 style="line-height: 1.3em; font-size: 20px; font-family: Helvetica; color: #4D4D4D; text-align: left;">Total Cost Today:</h3>
+						<h4 style="line-height: 1.5em; font-size: 40px; font-family: Helvetica; color: #4D4D4D; text-align: right;">€ 12.00 </h4>				
+					</div>
+				</div>	
+				</li>
+			</ul>
+			
 			<div data-role="content" data-theme="a">
-
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/cost now1.png" style="width: 100%;">
-    	</div>
+		
+				<div style="width: 100%;">
+		        	<img alt="" src="themes/images/mock_nexus/cost now1.png" style="width: 100%;">
+		    	</div>
 		    	
 			</div>
 			
@@ -27,42 +43,38 @@
 			
 			<div data-role="panel" id="myPanel_costNow" data-display="overlay" >
 				<ul data-role="listview">
-				 	<li><a href="energy_use.html">Energy Use</a></li>
-				 	<li><a href="history.html">History</a></li>
-				 	<li><a href="smart_home.html">Smart Home</a></li>
-				 	<li><a href="settings.html">Settings</a></li>
-				 	<li><a href="register.html">Register</a></li>
-				 	<li><a href="log_out.html">log Out</a></li>
+				<li><a href="energy_use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+				<li><a href="poll_form.html">Poll</a></li> 
+			 	<li><a href="smart_home.html">Smart Home</a></li>
+			 	<li><a href="settings.html">Settings</a></li>
+			 	<li><a href="register.html">Register</a></li>
+			 	<li><a href="login.html">Log In</a></li>
+			 	<li><a href="login_success.html">Log Out</a></li>
 				 </ul>
 			</div>
 		<script>
-		
-		$('#costNow').on('swiperight', function (event) {
-			$.mobile.changePage('energy_use.html', {
-				transition: 'slide',
-				reverse: true
-			});	 
+	
+		$(document).on('swiperight', function(event, ui){
+			$('#myPanel_costNow').panel('open');
 		});
+	
 		
-		function list_of_polls(){
-			$.ajax({
-					url:"http://localhost:8000/api/v1/poll/",
-					type: 'GET',
-					contentType: 'application/json',
-					data: 'data',
-					dataType: 'json',
-					success: function(data) {
-								$.each(data.objects, function(key, value){
-								$("ul#display").append("<li class='ui-li-static ui-body-inherit'><h3>" + 
-								value.title + "</h3><p>" + value.body + "</p></li>");
-								});
-					}
-				});
-		}
-		
-		list_of_polls();
 
 		</script>
 
-		</div><!-- /end of page -->
-	</body>
+</div><!-- /end of page -->
+
+
+
+		
+			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
+				<li data-role="list-divider">Energy Use</li>
+				<li><a href="energy_use.html">	
+				<div style="height: 100px; width:80%; margin: auto; background: transparent;">
+					<h3 style="text-align: center">Energy Use</h3>
+				</div>	
+				</a></li>
+			</ul>
+			
+	

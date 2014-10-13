@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-
-<html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Poll Form</title>
-		<meta name="author" content="James" />
-		<!-- Date: 2014-08-07 -->
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<link rel="stylesheet" href="themes/css/base.css" />
-		<link rel="stylesheet" href="themes/nexus1.1.css" />
-  		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.css" />
-		<script src="themes/jquery-1.11.1.js"></script>
-		<script src="themes/jquery.mobile-1.4.3.js"></script>
-	
-
-	</head>
-	<body>
-		<div data-role="page" id="poll_form" data-theme="a">	
+<div data-role="page" id="poll_form" data-theme="a">	
 			<div data-role="header" data-position="inline">
-				<a href="#myPanel_2" data-icon="bars" data-iconpos="notext"></a>
+				<a href="#myPanel_poll_form" data-icon="bars" data-iconpos="notext"></a>
 					<h1>Poll Form</h1>
 				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 			</div>
@@ -55,17 +35,25 @@
 					</ul>
 				</div><!-- /navbar -->	
 			</div><!-- /footer -->
-			<div data-role="panel" id="myPanel_2" data-display="overlay" >
+			<div data-role="panel" id="myPanel_poll_form" data-display="overlay" >
 				<ul data-role="listview">
-				 	<li><a href="#">Poll Form</a></li>
-				 	<li><a href="history.html">History</a></li>
-				 	<li><a href="smart_home.html">Smart Home</a></li>
-				 	<li><a href="settings.html">Settings</a></li>
-				 	<li><a href="log_out.html">Log Out</a></li>
+				<li><a href="energy_use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+				<li><a href="poll_form.html">Poll</a></li> 
+			 	<li><a href="smart_home.html">Smart Home</a></li>
+			 	<li><a href="settings.html">Settings</a></li>
+			 	<li><a href="register.html">Register</a></li>
+			 	<li><a href="login.html">Log In</a></li>
+			 	<li><a href="login_success.html">Log Out</a></li>
 				 </ul>
-			</div><!-- /end of panel -->		
+			</div><!-- /end of panel -->
+	
 		<script>
-		
+	
+
+		$(document).on('swiperight', function(event, ui){
+			$('#myPanel_poll_form').panel('open');
+		});
 
   	/* $("#posting_form").submit(function () {
 				$.ajax({
@@ -106,20 +94,18 @@
   				processData:  false,
   				contentType: "application/json",
 		        data: f_data,
-		        success: function( response ) {
-           			$.mobile.changePage( 'poll_list.html', {data: {"title": response.title}} );
-        			}
 		    });
 		            return false;
+	});
 		            
-			$.mobile.changePage('poll_list.html', {
+		/*	$.mobile.changePage('poll_list.html', {
 		   		transition: 'slide',
 		   		reverse: false,
-		  	});
+		  	});*/
 		//window.location.replace("index.html");
-	});
+
 	
-	$('#poll_form').on('swipeleft swiperight', function (event) {
+/*	$('#poll_form').on('swipeleft swiperight', function (event) {
 		
 		 if(event.type == 'swiperight') {
 				$('#myPanel_2').panel('open');
@@ -131,9 +117,7 @@
 		   reverse: false
 		  });
 		 }
-	});
+	});*/
 			</script>
 					
-		</div><!-- /end of page -->
-	</body>
-</html>
+		</div><!-- /end of page -->	

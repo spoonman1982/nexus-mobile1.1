@@ -1,0 +1,60 @@
+	<div data-role="page" id="login_success" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<a href="#myPanel_login_success" data-icon="bars" data-iconpos="notext"></a><h1>Login Success</h1>
+			<a href="index.html" data-icon="home" data-iconpos="notext"></a>
+		</div>
+		<div data-role="content" data-theme="a">
+			
+		<div style="width: 100%;">
+        	<h1> You have Logged Out Succesfully</h1>
+    	</div>
+    	<br>
+    	<button action="#"  id="log_out_btn"> Log Out</button>
+    	<ul id="dispaly">
+    		<li>
+    		</li>
+    	</ul>
+
+		</div>
+
+		<div data-role="panel" id="myPanel_login_success" data-display="overlay">
+			<ul data-role="listview">
+				<li><a href="energy_use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+				<li><a href="poll_form.html">Poll</a></li> 
+			 	<li><a href="smart_home.html">Smart Home</a></li>
+			 	<li><a href="settings.html">Settings</a></li>
+			 	<li><a href="register.html">Register</a></li>
+			 	<li><a href="login.html">Log In</a></li>
+			 	<li><a href="login_success.html">Log Out</a></li>
+			 </ul>
+		</div>
+		<script>
+
+		$(document).on('swiperight', function(event, ui){
+			$('#myPanel_login_success').panel('open');
+		});
+		
+	$("#log_out_btn").click(function(event){
+		
+		event.preventDefault();
+		
+		$.ajax({
+			url:"http://localhost:8000/api/v1/user/logout/",
+			type: 'GET',
+			contentType: 'application/json',
+			data: 'data',
+			dataType: 'json',
+			success: function(data) {
+						$("ul#display").append("<li class='ui-li-static ui-body-inherit'><h3> This Seems To Have </h3></li>");
+						}
+			});
+	});
+	
+	
+
+		
+
+		</script>
+		
+</div><!-- /end of page -->

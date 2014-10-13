@@ -14,7 +14,9 @@
 	<script src="themes/highcharts.src.js"></script>
 	<script>
 		$(function(){
+			
 			$.backstretch("themes/images/bg2.png");
+			
 		});
 	</script>
 </head>
@@ -49,6 +51,8 @@
 				</div>	
 				</a></li>
 			</ul>
+			
+			
 			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
 				<li data-role="list-divider">Settings</li>
 				<li><a href="settings.html">	
@@ -63,13 +67,20 @@
 			<ul data-role="listview">
 				<li><a href="energy_use.html">Energy Use</a></li>
 			 	<li><a href="history.html">History</a></li>
+				<li><a href="poll_form.html">Poll</a></li> 
 			 	<li><a href="smart_home.html">Smart Home</a></li>
 			 	<li><a href="settings.html">Settings</a></li>
 			 	<li><a href="register.html">Register</a></li>
-			 	<li><a href="log_out.html">log Out</a></li> 	
+			 	<li><a href="login.html">Log In</a></li>
+			 	<li><a href="login_success.html">Log Out</a></li>
 			 </ul>
 		</div>
-	</div>
+		<script>
+			$(document).on('swiperight', function(event, ui){
+				$('#myPanel_index').panel('open');
+			});
 
+		</script>
+	</div>
 </body>
 </html>

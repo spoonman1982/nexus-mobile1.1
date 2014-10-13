@@ -1,6 +1,4 @@
-	<body>
-	
-		<div data-role="page" id="energyUse" data-theme="a">
+<div data-role="page" id="energyUse" data-theme="a">
 			
 			<div data-role="header" data-position="inline">
 				<a href="#myPanel_energyUse" data-icon="bars" data-iconpos="notext"></a>
@@ -8,16 +6,17 @@
 				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 			</div>
 			
-			<div data-role="content" data-theme="a">
-				<div id="content_wrapper" style="background: #DDDDDD;  border-radius: 10px; width:100%; margin-top: 5px; ">
-					<h2 style="text-align: center; padding-top:10px ">Power Viewer</h2>
-		
+			
+			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
+				<li data-role="list-divider"> Power Viewer </li>
+				<li style='background: #f3f3f3;'>			
 					<div style="width:200px; margin: 0 auto">
 						<canvas id="power_now_guage" width="200" height="100" style="text-align: center;"></canvas>
 					</div>
 					<h3 id="power_now_reading" style="text-align: center; padding-bottom:10px"> 1.2 kW </h3>
-				</div><!-- content wrapper -->
-			</div><!--data-role=content-->
+				</li>
+			</ul>
+
 			
 			<div data-role="footer" data-id="foo7" data-position="fixed">
 				<div data-role="navbar">
@@ -30,23 +29,21 @@
 			
 			<div data-role="panel" id="myPanel_energyUse" data-display="overlay" >
 				<ul data-role="listview">
-				 	<li><a href="#">Energy Use</a></li>
-				 	<li><a href="history.html">History</a></li>
-				 	<li><a href="smart_home.html">Smart Home</a></li>
-				 	<li><a href="settings.html">Settings</a></li>
-				 	<li><a href="register.html">Register</a></li>
-				 	<li><a href="log_out.html">log Out</a></li>
+				<li><a href="energy_use.html">Energy Use</a></li>
+			 	<li><a href="history.html">History</a></li>
+				<li><a href="poll_form.html">Poll</a></li> 
+			 	<li><a href="smart_home.html">Smart Home</a></li>
+			 	<li><a href="settings.html">Settings</a></li>
+			 	<li><a href="register.html">Register</a></li>
+			 	<li><a href="login.html">Log In</a></li>
+			 	<li><a href="login_success.html">Log Out</a></li>
 				 </ul>
 			</div>
 		<script>
 		
-		$('#energyUse').on('swipeleft', function (event) {
-			$.mobile.changePage('cost_now.html', {
-				transition: 'slide',
-				reverse: true,
-			});	 
+		$(document).on('swiperight', function(event, ui){
+			$('#myPanel_energyUse').panel('open');
 		});
-		
 	/*	function list_of_polls(){
 			$.ajax({
 					url:"http://localhost:8000/api/v1/poll/",
@@ -90,5 +87,5 @@
 
 		</script>
 
-		</div><!-- /end of page -->
-	</body>
+</div><!-- /end of page -->
+
