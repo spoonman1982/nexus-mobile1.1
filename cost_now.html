@@ -5,41 +5,31 @@
 					<h1>Cost Now</h1>
 				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 			</div>
-			
-			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
+			<ul data-inset="true" id="cost_viewer" class="list_viewer" data-role="listview" data-theme="a">
 				<li data-role="list-divider"> Cost Viewer </li>
-				<li style='background: #f3f3f3;'>
-				<div style="max-width:300px; margin: auto;">
-					<h3 style="line-height: 1.3em; font-size: 20px; font-family: Helvetica; color: #4D4D4D; text-align: center;">Spend Now</h3>
-					<div id="spending_now_container" style="max-width:300px; height: 130px; margin: 10px auto; position:relative">
-						<img alt="euro icon" src="themes/images/euro_icon.png" style="top:15; left:10; width:55px; height:120px; position: absolute;">
-						<span style="height: 20px; letter-spacing: 0; color:#66aad7; font-size: 2.7em;
-	position:absolute; top:35; left:90; font-family: arial; font-weight: bolder;"> 3.17/hr </span>
+				<li class="list_container">
+				<div class="max-width">
+					<h3>Spend Now</h3>
+					<div id="spending_now_container">
+						<img alt="euro icon" src="themes/images/euro_icon.png">
+						<span> 3.17/hr </span>
 					</div>
-					<div style="max-width:300px; margin: auto;">
-						<h3 style="line-height: 1.3em; font-size: 20px; font-family: Helvetica; color: #4D4D4D; text-align: left;">Total Cost Today:</h3>
-						<h4 style="line-height: 1.5em; font-size: 40px; font-family: Helvetica; color: #4D4D4D; text-align: right;">€ 12.00 </h4>				
+					<div id="spend_so_far_today">
+						<h3>Total Cost Today:</h3>
+						<h4>€ 12.00 </h4>				
 					</div>
 				</div>	
 				</li>
 			</ul>
 			
-			<div data-role="content" data-theme="a">
-		
-				<div style="width: 100%;">
-		        	<img alt="" src="themes/images/mock_nexus/cost now1.png" style="width: 100%;">
-		    	</div>
-		    	
-			</div>
-			
-			<div data-role="footer" data-id="foo7" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li><a href="energy_use.html" data-transition="slide">Energy Use</a></li>
-						<li><a href="#" class="ui-btn-active  ui-state-persist" >Cost Now</a></li>
-					</ul>
-				</div><!-- /navbar -->
-			</div><!-- /footer -->
+		<div data-role="footer" data-id="foo_cost_now" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="energy_use.html" data-transition="slide">Energy Use</a></li>
+					<li><a href="#" class="ui-btn-active  ui-state-persist" >Cost Now</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
 			
 			<div data-role="panel" id="myPanel_costNow" data-display="overlay" >
 				<ul data-role="listview">
@@ -67,14 +57,5 @@
 
 
 
-		
-			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
-				<li data-role="list-divider">Energy Use</li>
-				<li><a href="energy_use.html">	
-				<div style="height: 100px; width:80%; margin: auto; background: transparent;">
-					<h3 style="text-align: center">Energy Use</h3>
-				</div>	
-				</a></li>
-			</ul>
-			
+
 	

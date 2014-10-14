@@ -4,13 +4,23 @@
 			<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 		</div>
 		<div data-role="content" data-theme="a">
-			
-		<div style="width: 100%;">
-        	<img alt="" src="themes/images/mock_nexus/history1.png" style="width: 100%;">
-    	</div>
-
+				
+			<div style="width: 100%;">
+	        	<img alt="" src="themes/images/mock_nexus/history1.png" style="width: 100%;">
+	    	</div>
 		</div>
-		<div data-role="footer" data-id="foo3" data-position="fixed">
+		<ul data-inset="true" class="list_viewer" data-role="listview" data-theme="a">
+			<li data-role="list-divider"> Last Months Bill</li>
+			<li class="list_container">
+				<div class="progress">
+			  		<div class="progress-bar-success progress-bar" id="monthly_power_percentage" style="width: 40%;">
+			  		</div>
+				</div>
+				<h3 id="monthly_power_total" style="text-align: center">Default</h3>
+			</li>
+		</ul>
+		
+		<div data-role="footer" data-id="foo_history" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#" class="ui-btn-active  ui-state-persist">History</a></li>
@@ -35,6 +45,18 @@
 		$(document).on('swiperight', function(event, ui){
 			$('#myPanel_history').panel('open');
 		});
+	
+
+function history_monthly_power(){
+	var monthly_power_target = 150;
+	var monthly_power_so_far = 100;
+	var monthly_precentage_so_far = (monthly_power_so_far/monthly_power_target)*100;
+	
+    $("#monthly_power_percentage").css("width",  monthly_precentage_so_far + "%" );
+    $("#monthly_power_total").text(monthly_power_so_far + " kWh" );
+   }
+   
+   history_monthly_power();
 	</script>
 	
 </div><!-- /end of page -->
