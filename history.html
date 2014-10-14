@@ -1,5 +1,5 @@
 <div data-role="page" id="history" data-theme="a">
-		<div data-role="header" data-position="inline">
+		<div data-role="header" data-position="fixed">
 			<a href="#myPanel_history" data-icon="bars" data-iconpos="notext"></a><h1>History</h1>
 			<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 		</div>
@@ -12,11 +12,46 @@
 		<ul data-inset="true" class="list_viewer" data-role="listview" data-theme="a">
 			<li data-role="list-divider"> Last Months Bill</li>
 			<li class="list_container">
+				<br/>
 				<div class="progress">
 			  		<div class="progress-bar-success progress-bar" id="monthly_power_percentage" style="width: 40%;">
 			  		</div>
 				</div>
 				<h3 id="monthly_power_total" style="text-align: center">Default</h3>
+					
+							
+				<span class="large_blue">You Used:</span>
+				<div class="row_container">
+							<div class="half_row_contaier">
+								<span class="large_green">8% Less!</span>
+							</div>
+							<div  class="half_row_contaier">
+								<p class="darker_text" style="margin-top: 10px">than similar homes</p>
+							</div>
+						<div class="clear_float">&nbsp;</div>
+							<div class="half_row_contaier">
+								<p class="darker_text">Efficient Homes</p>
+							</div>
+							<div  class="half_row_contaier">
+								<p class="lighter_text">390 kWh</p>
+							</div>
+						<div class="clear_float">&nbsp;</div>
+							<div class="half_row_contaier">
+								<p class="darker_text">Average Homes</p>
+							</div>
+							<div  class="half_row_contaier">
+								<p class="lighter_text">590 kWh</p>
+							</div>
+						<div class="clear_float">&nbsp;</div>
+							<div class="half_row_contaier">
+								<p class="darker_text">Inefficient Homes</p>
+							</div>
+							<div  class="half_row_contaier">
+								<p class="lighter_text">1120 kW</p>
+							</div>
+						<div class="clear_float">&nbsp;</div>
+					</div>
+				
 			</li>
 		</ul>
 		

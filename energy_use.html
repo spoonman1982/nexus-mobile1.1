@@ -6,7 +6,6 @@
 				<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 			</div>
 			
-			
 			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
 				<li data-role="list-divider"> Power Viewer </li>
 				<li style='background: #f3f3f3;'>			
@@ -16,17 +15,24 @@
 					<h3 id="power_now_reading" style="text-align: center; padding-bottom:10px"> 1.2 kW </h3>
 				</li>
 			</ul>
+			
+			<ul data-inset="true" id="cost_viewer" class="list_viewer" data-role="listview" data-theme="a">
+				<li data-role="list-divider"> Cost Viewer </li>
+				<li class="list_container">
+				<div class="max-width">
+					<h3>Current Spend</h3>
+					<div id="spending_now_container">
+						<img alt="euro icon" src="themes/images/euro_icon.png">
+						<span> 3.17/hr </span>
+					</div>
+					<div id="spend_so_far_today">
+						<h3>Total Spend Today:</h3>
+						<h4>€ 12.00 </h4>				
+					</div>
+				</div>	
+				</li>
+			</ul>
 
-			
-		<div data-role="footer" data-id="foo_energy_use" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#" class="ui-btn-active  ui-state-persist" >Energy Use</a></li>
-					<li><a href="cost_now.html" data-transition="slide" >Cost Now</a></li>
-				</ul>
-			</div><!-- /navbar -->
-		</div><!-- /footer -->
-			
 			<div data-role="panel" id="myPanel_energyUse" data-display="overlay" >
 				<ul data-role="listview">
 				<li><a href="energy_use.html">Energy Use</a></li>
