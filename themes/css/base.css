@@ -78,3 +78,13 @@ box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
 -o-transition: width .6s ease;
 transition: width .6s ease;
 }
+
+
+.drop_down{
+	background-color: #D6D6D6 !important;
+	color: #828282 !important;
+}
+
+.ui-panel{
+	width: 12em !important;
+}

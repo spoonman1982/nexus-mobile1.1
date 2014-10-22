@@ -7,16 +7,15 @@
   	<link rel="stylesheet" href="themes/css/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.css" />
 	<link rel="stylesheet" href="themes/css/base.css" />
-	<script src="themes/jquery-1.11.1.js"></script>
-	<script src="themes/guage.min.js"></script>
-	<script src="themes/jquery.mobile-1.4.3.js"></script>
-	<script src="themes/jquery.backstretch.min.js"></script>
-	<script src="themes/highcharts.src.js"></script>
+	<script src="themes/js/jquery-1.11.1.js"></script>
+	<script src="themes/js/guage.min.js"></script>
+	<script src="themes/js/jquery.mobile-1.4.3.js"></script>
+	<script src="themes/js/jquery.backstretch.min.js"></script>
+	<script src="themes/js/highcharts.src.js"></script>
+	<script src="themes/js/tendina.js"></script>
 	<script>
 		$(function(){
-			
 			$.backstretch("themes/images/bg2.png");
-			
 		});
 	</script>
 </head>
@@ -28,6 +27,34 @@
 		</div>
 		
 			<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
+				<li data-role="list-divider"> Power Viewer </li>
+				<li style='background: #f3f3f3;'>			
+					<div style="width:200px; margin: 0 auto">
+						<canvas id="power_now_guage" width="200" height="100" style="text-align: center;"></canvas>
+					</div>
+					<h3 id="power_now_reading" style="text-align: center; padding-bottom:10px"> 1.2 kW </h3>
+				</li>
+			</ul>
+			
+			<ul data-inset="true" id="cost_viewer" class="list_viewer" data-role="listview" data-theme="a">
+				<li data-role="list-divider"> Cost Viewer </li>
+				<li class="list_container">
+				<div class="max-width">
+					<h3>Current Spend</h3>
+					<div id="spending_now_container">
+						<img alt="euro icon" src="themes/images/euro_icon.png">
+						<span> 3.17/hr </span>
+					</div>
+					<div id="spend_so_far_today">
+						<h3>Total Spend Today:</h3>
+						<h4>€ 12.00 </h4>				
+					</div>
+				</div>	
+				</li>
+			</ul>
+
+		
+		<!--	<ul data-inset="true" data-role="listview" data-theme="a" style="margin-top: 20px; margin-left: 2%; margin-right: 2%;">
 				<li data-role="list-divider">Energy Use</li>
 				<li><a href="energy_use.html">	
 				<div style="height: 100px; width:80%; margin: auto; background: transparent;">
@@ -60,26 +87,63 @@
 					<h3 style="text-align: center">Settings Link </h3>
 				</div>	
 				</a></li>
-			</ul>
+			</ul>-->
 
 		
 		<div data-role="panel" id="myPanel_index" data-display="overlay" class="myPanel">
-			<ul data-role="listview">
-				<li><a href="energy_use.html">Energy Use</a></li>
+			<ul data-role="listview" id="index_menu">
+				<li><a href="index.html">Dash Board</a></li>
 			 	<li><a href="history.html">History</a></li>
-				<li><a href="poll_form.html">Poll</a></li> 
+				<li><a href="#">Energy</a>
+					<ul data-role="listview">
+						<li><a href="#" class="drop_down">My Home</a></li>
+						<li><a href="#" class="drop_down">Budget</a></li>
+						<li><a href="#" class="drop_down">Graph</a></li>	
+					</ul>
+				</li> 
 			 	<li><a href="smart_home.html">Smart Home</a></li>
-			 	<li><a href="settings.html">Settings</a></li>
-			 	<li><a href="register.html">Register</a></li>
-			 	<li><a href="login.html">Log In</a></li>
-			 	<li><a href="login_success.html">Log Out</a></li>
+			 	<li><a href="#">Settings</a>
+			 		<ul data-role="listview">
+			 			<li><a href="#" class="drop_down">Sync Settings</a></li>
+			 			<li><a href="#" class="drop_down">Log Out</a></li>
+			 		</ul>
+			 	</li>
 			 </ul>
 		</div>
 		<script>
-			$(document).on('swiperight', function(event, ui){
-				$('#myPanel_index').panel('open');
-			});
+		
+	$('#index_menu').tendina({
+  		speed: 400,
+	});
+		
+	$(document).on('swiperight', function(event, ui){
+		$('#myPanel_index').panel('open');
+	});
+			
+	var opts = {
+		lines: 0, // The number of lines to draw
+		angle: 0, // The length of each line
+		lineWidth: 0.26, // The line thickness
+	  	colorStart: '#6FADCF',   // Colors
+	  	colorStop: '#8FC0DA',    // just experiment with them
+	  	strokeColor: '#E0E0E0',   // to see which ones work best for you
+	  	generateGradient: true,
+	  	pointer: {
+	    	length: 0.58, // The radius of the inner circle
+			strokeWidth: 0.06, // The rotation offset
+			color: '#000000' // Fill color
+	  	},
+	  	limitMax: 'false',   // If true, the pointer will not go past the end of the gauge
 
+	};
+		
+		var target = document.getElementById('power_now_guage'); // your canvas element
+		var gauge = new Gauge(target).setOptions(opts); 
+		
+		gauge.maxValue = 3000; // set max gauge value
+		gauge.animationSpeed = 32; // set animation speed (32 is default value)
+		gauge.set(2999); // set actual value
+			
 		</script>
 	</div>
 </body>

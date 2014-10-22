@@ -54,7 +54,7 @@
 		
 	/*AJAX form submission*/
 		
-	$("#register").submit(function(event) {
+	$("#registration").submit(function(event) {
 
 
 				event.preventDefault();
@@ -72,20 +72,20 @@
 				});
 
 				$.ajax({
-					 url: "http://localhost:8000/api/v1/register/",
-					 type: 'POST',
-					 contentType: 'application/json',
-					 data: f_data,
-					 dataType: 'json',
-					 processData: false,
-					 error: function(request, status, error){
-						alert(request);
-					 	},
-					});
-
-				$.mobile.changePage( "http://127.0.0.1:8020/nexus-mobile1.1/users.html", 
-				{ transition: "slideup", changeHash: false });
-
+					url: "http://localhost:8000/api/v1/register/",
+					type: 'POST',
+  					dataType: "json",
+  					processData:  false,
+  					contentType: "application/json",
+		        	data: f_data,
+		        	success: function() {
+		        		$.mobile.changePage("users.html");
+		        	},
+		        	error:	function(){
+		        		alert("Regisration Failed");
+		        	},
+			
+				});
 			});
 			
 	/*Swipe Event
