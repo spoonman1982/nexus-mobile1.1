@@ -1,0 +1,338 @@
+<div data-role="page" id="graphs" data-theme="a">
+	<div data-role="header" data-position="fixed">
+		<a href="#myPanel_graphs" data-icon="bars" data-iconpos="notext"></a>
+		<h1>Graphs</h1>
+		<a href="index.html" data-icon="home" data-iconpos="notext"></a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="javascript:update_custom_graph('daily');">Today</a></li>
+				<li><a href="javascript:update_custom_graph('weekly');">Week</a></li>
+				<li><a href="javascript:update_custom_graph('monthly');">Month</a></li>
+				<li><a href="javascript:update_custom_graph('yearly');">Year</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div data-role="content" data-theme="a">
+			
+			<div id="history_graph" class="prices_chart" style="min-width: 300px; width:80%;"> </div>
+		
+	</div>
+
+	<div data-role="panel" id="myPanel_graphs" data-display="overlay">
+		<ul data-role="listview" id="budget_menu">
+			<li><a href="index.html">Dash Board</a></li>
+			<li><a href="#">Energy</a>
+				<ul data-role="listview">
+					<li><a href="my_home.html" class="drop_down">My Home</a></li>
+						<li><a href="budget.html" class="drop_down">Budget</a></li>
+						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
+				</ul>
+			</li> 
+			<li><a href="history.html">History</a></li>
+			<li><a href="#">Settings</a>
+			 	<ul data-role="listview">
+			 		<li><a href="#" class="drop_down">Sync Settings</a></li>
+			 		<li><a href="#" class="drop_down">Log Out</a></li>
+			 	</ul>
+			</li>
+		</ul>
+	</div>
+	
+	<script>
+			
+	$(document).on('swiperight', function(event, ui){
+		$('#myPanel_graphs').panel('open');
+	});
+	
+   	days = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+
+	today = new Date();
+	
+
+function update_custom_graph(period){
+	chart1 = new Highcharts.Chart({
+        chart: {
+           	renderTo: 'history_graph',
+           	type: 'column',
+            spacingTop: 110,
+            },
+        title: {
+	        text: 'Electricity Use - ' + period,
+            floating: true,
+	        align: 'center',
+	        x: 0,
+	        y: -65,
+	        style:{
+	            color: '#14140A',
+	            fontSize: '1em',
+	            fontWeight: 'bold',
+	            fontFamily: 'arial'
+	            },
+	        },
+        	subtitle: {
+                text: days[today.getDay()] + " " + today.toLocaleDateString(),
+               	floating: true,
+                align: 'center',
+                x: 0,
+                y: -40,
+                style:{
+                	color: '#14140A',
+                    fontSize: '0.9em',
+                    fontFamily: 'arial'
+                	}
+        		},
+               colors: ["#3FA9F5"],
+        	xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    second: '%H:%M:%S',
+                    minute: '%H:%M',
+                    hour: '%H:%M',
+                    day: '%e. %b',
+                    week: '%e. %b',
+                    month: '%b', //month formatted as month only
+                    year: '%Y'
+                },
+                 labels: {
+                     style: {
+                        color: "#666666",
+                        fontWeight: "bold"
+                    }
+                },
+
+            },
+        legend: {
+            enabled: false
+        },
+        yAxis: {
+            min: 0,
+            allowDecimals: false,
+            gridLineWidth: 0,
+            labels: {
+                 style: {
+                    color: "#808080",
+                    fontWeight: "bold"
+                }
+            },
+            title: {
+                text: "€",
+                rotation: 0,
+                style: {
+                    color: "#808080",
+                    fontWeight: "bold",
+                    fontSize: "12px"
+                }    
+            }
+        },
+        plotOptions: {
+            column: {
+                //colorByPoint: true,
+                pointPadding: 0.05,
+                groupPadding: 0.05,
+                pointPlacement: "between",
+            }
+        }
+    });
+    
+	$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	
+	
+	    while(chart1.series.length > 0)
+	      chart1.series[0].remove(true);
+	    var dataArray = new Array();
+	    for (var i = 0; i < data.readings.length; i++){
+	      var item = {
+	        x: Date.parse(data.readings[i].time),
+	        y: parseFloat(data.readings[i].kwh),
+	        color: '#FFA500'
+	      };
+	      dataArray.push(item);
+	    }
+	        
+	        var data_type = "Electricity Use - Monthly";
+	        var series = {
+	            name: data_type,
+	            data: dataArray,
+	            pointInterval: 3600 * 1000
+	           };
+			chart1.addSeries(series);
+		
+		
+	});
+};					    
+					    
+/*$.get('/data/history/1/day/', function(data){
+	
+        while(chart1.series.length > 0)
+    		chart1.series[0].remove(true);
+		var dataArray = new Array();
+		for (var i = 0; i < data.readings.length; i++){
+			var item = {
+				x: Date.parse(data.readings[i].time),
+				y: parseFloat(data.readings[i].kwh),
+				color: '#FFA500'
+			} 
+			dataArray.push(item)
+		}
+        
+        var data_type = "Electricity Use"
+        var series = {
+            name: data_type,
+            data: dataArray,
+            pointInterval: 3600 * 1000}
+		chart1.addSeries(series);
+	});
+today = new Date();
+	
+chart1 = new Highcharts.Chart({
+        chart: {
+                renderTo: 'history_graph',
+                type: 'column',
+                spacingTop: 50,
+            },
+
+            colors: [
+             '#ffa500',  '#0d233a'
+             ],
+        xAxis: {
+            showFirstLabel: false,
+            tickInterval: 3*3600*1000,
+            type: "datetime",
+            dateTimeLabelFormats: {  
+                hour: '%l%P'   
+            },
+            labels: {
+                y : 25,
+                style: {
+                    fontSize: '0.7em',
+                    color: "#14140A",
+                    fontWeight: "bold",
+                    fontFamily: "arial",
+                },
+            },
+        },
+
+        title: {
+                text: 'Electricity Use Today',
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -65,
+                style:{
+                    color: '#14140A',
+                    fontSize: '1em',
+                    fontWeight: 'bold',
+                    fontFamily: 'arial'
+                    }
+        },
+
+        subtitle: {
+                floating: true,
+                align: 'center',
+                x: 0,
+                y: -40,
+                style:{
+                        color: '#14140A',
+                        fontSize: '0.8em',
+                        fontFamily: 'arial'
+                    }
+        },
+        legend:{       
+            symbolHeight: 15,
+            symbolWidth: 15,
+            symbolPadding: 10,
+            borderColor: '#ffffff',
+            padding: 3,
+            itemMarginTop: 25,
+            itemMarginBottom: 25,
+            itemStyle: {
+                lineHeight: '20px',
+                font: 'bold 1.6em arial, sans-serif',
+            },
+        },
+        yAxis: {
+            min: 0,
+            allowDecimals: true,
+            gridLineColor: "#B9B9B9",
+            labels: {
+                style: {
+                    fontSize: '1.6em',
+                    color: "#14140A",
+                    fontWeight: "bold",
+                    fontFamily: "arial",
+                }
+            },
+            title: {
+                text: "kwh",
+                style: {
+                    color: "#14140A",
+                    fontWeight: "bold",
+                    fontSize: "1.6em"
+                    }    
+                }
+            },
+        plotOptions: {
+            column: {
+                //colorByPoint: true,
+                pointPadding: 0.05,
+                groupPadding: 0.05,
+                pointPlacement: "between",
+            }
+        }
+     });
+	//Update data on graph
+
+/* month_text = '{ "type":"month", readings: [{kwh: "0.000", cost: "0.00", time: "2014-10-01T00:00:00"}' +
+'{kwh: "1.000",cost: "0.00",time: "2014-10-02T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-03T00:00:00"},' +
+'{kwh: "2.000",cost: "0.00",time: "2014-10-04T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-05T00:00:00"},' +
+'{kwh: "3.000",cost: "0.00",time: "2014-10-06T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-07T00:00:00"},' +
+'{kwh: "4.000",cost: "0.00",time: "2014-10-08T00:00:00"},{kwh: "8.000",cost: "0.00",time: "2014-10-09T00:00:00"},' + 
+'{kwh: "1.000",cost: "0.00",time: "2014-10-10T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-11T00:00:00"},' + 
+'{kwh: "2.000",cost: "0.00",time: "2014-10-12T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-13T00:00:00"},' + 
+'{kwh: "3.000",cost: "0.00",time: "2014-10-14T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-15T00:00:00"},' + 
+'{kwh: "4.000",cost: "0.00",time: "2014-10-16T00:00:00"},{kwh: "8.000",cost: "0.00",time: "2014-10-17T00:00:00"},' + 
+'{kwh: "1.000",cost: "0.00",time: "2014-10-18T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-19T00:00:00"},' + 
+'{kwh: "2.000",cost: "0.00",time: "2014-10-20T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-21T00:00:00"},' + 
+'{kwh: "3.000",cost: "0.00",time: "2014-10-22T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-23T00:00:00"},' + 
+'{kwh: "4.000",cost: "0.00",time: "2014-10-24T00:00:00"},{kwh: "8.000",cost: "0.00",time: "2014-10-25T00:00:00"},' + 
+'{kwh: "1.000",cost: "0.00",time: "2014-10-26T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-27T00:00:00"},' + 
+'{kwh: "2.000",cost: "0.00",time: "2014-10-28T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-29T00:00:00"},' + 
+'{kwh: "3.000",cost: "0.00",time: "2014-10-30T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-31T00:00:00"}]}';
+
+month_data = JSON.parse(month_text);
+	
+function update_custom_graph(){
+
+        while(chart1.series.length > 0)
+    		chart1.series[0].remove(true);
+		var dataArray = new Array();
+		for (var i = 0; i < obj.readings.length; i++){
+			var item = {
+				x: Date.parse(month_data.readings[i].time),
+				y: parseFloat(month_data.readings[i].kwh),
+				color: '#FFA500'
+			}; 
+			dataArray.push(item);
+		}
+        
+        var data_type = "Electricity Use - All Buildings";
+        var series = {
+            name: data_type,
+            data: dataArray,
+            pointInterval: 3600 * 1000
+           };
+		chart1.addSeries(series);
+};*/
+	
+
+
+
+					    
+					    
+					    
+					    
+					    
+					    
+					    		
+	</script>
+</div><!-- /end of page -->		
