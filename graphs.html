@@ -4,18 +4,18 @@
 		<h1>Graphs</h1>
 		<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 		<div data-role="navbar">
-			<ul>
-				<li><a href="javascript:update_custom_graph('daily');">Today</a></li>
-				<li><a href="javascript:update_custom_graph('weekly');">Week</a></li>
-				<li><a href="javascript:update_custom_graph('monthly');">Month</a></li>
-				<li><a href="javascript:update_custom_graph('yearly');">Year</a></li>
+			<ul id="graph_nav" >
+				<li><a href="javascript:update_custom_graph('daily');" class="active_link">Today</a></li>
+				<li><a href="javascript:update_custom_graph('weekly');" class="">Week</a></li>
+				<li><a href="javascript:update_custom_graph('monthly');" class="">Month</a></li>
+				<li><a href="javascript:update_custom_graph('yearly');" class="">Year</a></li>
 			</ul>
 		</div>
 	</div>
 	
 	<div data-role="content" data-theme="a">
 			
-			<div id="history_graph" class="prices_chart" style="min-width: 300px; width:80%;"> </div>
+			<div id="history_graph" class="prices_chart"> </div>
 		
 	</div>
 
@@ -29,7 +29,6 @@
 						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
 				</ul>
 			</li> 
-			<li><a href="history.html">History</a></li>
 			<li><a href="#">Settings</a>
 			 	<ul data-role="listview">
 			 		<li><a href="#" class="drop_down">Sync Settings</a></li>
@@ -38,12 +37,24 @@
 			</li>
 		</ul>
 	</div>
+		<style>
+			.active_link{
+				background-color:#0080FF !important;
+				color: #ffffff !important;
+			}
+		</style>
 	
 	<script>
-			
+	
 	$(document).on('swiperight', function(event, ui){
 		$('#myPanel_graphs').panel('open');
 	});
+	
+	$("ul#graph_nav li a").on("click", function(){
+        $(this).addClass("active_link");
+        $('ul#graph_nav li a').not(this).removeClass("active_link");
+	});
+
 	
    	days = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 
@@ -51,18 +62,20 @@
 	
 
 function update_custom_graph(period){
+	
+	
 	chart1 = new Highcharts.Chart({
         chart: {
            	renderTo: 'history_graph',
            	type: 'column',
-            spacingTop: 110,
+            spacingTop: 80,
             },
         title: {
 	        text: 'Electricity Use - ' + period,
             floating: true,
 	        align: 'center',
 	        x: 0,
-	        y: -65,
+	        y: -45,
 	        style:{
 	            color: '#14140A',
 	            fontSize: '1em',
@@ -75,7 +88,7 @@ function update_custom_graph(period){
                	floating: true,
                 align: 'center',
                 x: 0,
-                y: -40,
+                y: -30,
                 style:{
                 	color: '#14140A',
                     fontSize: '0.9em',
@@ -104,6 +117,16 @@ function update_custom_graph(period){
             },
         legend: {
             enabled: false
+        },
+        tooltip: {
+            shared: true,    
+            formatter: function () {
+                  var result = '<b>' + Highcharts.dateFormat('%b %e, %Y', this.x) + '</b>';
+                    $.each(this.points, function (i, datum) {
+                        result += '<br />' + Math.round(datum.y) + ' Euro';
+                    });
+                    return result;
+            }
         },
         yAxis: {
             min: 0,
@@ -149,7 +172,7 @@ function update_custom_graph(period){
 	      dataArray.push(item);
 	    }
 	        
-	        var data_type = "Electricity Use - Monthly";
+	        var data_type = "Electricity Use - " + capitaliseFirstLetter(period);
 	        var series = {
 	            name: data_type,
 	            data: dataArray,
@@ -160,7 +183,14 @@ function update_custom_graph(period){
 		
 	});
 };					    
-					    
+
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+update_custom_graph("daily");
+	    
 /*$.get('/data/history/1/day/', function(data){
 	
         while(chart1.series.length > 0)

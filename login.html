@@ -25,24 +25,29 @@
 				</form>
 				
 				<br/><br/>
-				<button id="logout_btn" action="#">Log Out</button>
 				
 	    	</div>
 
 		</div>
 		
-		<div data-role="panel" id="myPanel_login" data-display="overlay" class="myPanel">
-			<ul data-role="listview">
-				<li><a href="energy_use.html">Energy Use</a></li>
-			 	<li><a href="history.html">History</a></li>
-				<li><a href="poll_form.html">Poll</a></li> 
-			 	<li><a href="smart_home.html">Smart Home</a></li>
-			 	<li><a href="settings.html">Settings</a></li>
-			 	<li><a href="register.html">Register</a></li>
-			 	<li><a href="login.html">Log In</a></li>
-			 	<li><a href="login_success.html">Log Out</a></li>	
-			 </ul>
-		</div>
+	<div data-role="panel" id="myPanel_login" data-display="overlay">
+		<ul data-role="listview" id="login_menu">
+			<li><a href="index.html">Dash Board</a></li>
+			<li><a href="#">Energy</a>
+				<ul data-role="listview">
+					<li><a href="my_home.html" class="drop_down">My Home</a></li>
+						<li><a href="budget.html" class="drop_down">Budget</a></li>
+						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
+				</ul>
+			</li> 
+			<li><a href="#">Settings</a>
+			 	<ul data-role="listview">
+			 		<li><a href="#" class="drop_down">Sync Settings</a></li>
+			 		<li><a href="login.html" class="drop_down">Log Out</a></li>
+			 	</ul>
+			</li>
+		</ul>
+	</div>
 <script>
 
 		$(document).on('swiperight', function(event, ui){
@@ -123,4 +128,4 @@ return false;
 });*/
 
 </script>
-	</div>
+</div>
