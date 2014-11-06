@@ -43,15 +43,16 @@
 		
 		function list_of_polls(){
 			$.ajax({
-					url:"http://localhost:8000/api/v1/poll/",
+					url:"http://192.168.0.109:8000/api/v1/currentreading/",
 					type: 'GET',
 					contentType: 'application/json',
 					data: 'data',
-					dataType: 'json',
+					dataType: 'jsonp',
 					success: function(data) {
 								$.each(data.objects, function(key, value){
 								$("ul#display").append("<li class='ui-li-static ui-body-inherit'><h3>" + 
-								value.title + "</h3><p>" + value.body + "</p></li>");
+								value.device + "</h3><p>" + value.kWh + "</p><p>" + value.cost + 
+								"</p><p>" + value.time + "</p></li>");
 								});
 					}
 				});

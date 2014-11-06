@@ -15,7 +15,7 @@
 	
 	<div data-role="content" data-theme="a">
 			
-			<div id="history_graph" class="prices_chart"> </div>
+			<div id="history_graph" class="prices_chart" style="width:95%; margin: 0 3% 0 2%"> </div>
 		
 	</div>
 
@@ -158,10 +158,11 @@ function update_custom_graph(period){
         }
     });
     
-	$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	
+	/*$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	
 	
-	    while(chart1.series.length > 0)
+	    while(chart1.series.length > 0){
 	      chart1.series[0].remove(true);
+	      }
 	    var dataArray = new Array();
 	    for (var i = 0; i < data.readings.length; i++){
 	      var item = {
@@ -181,7 +182,7 @@ function update_custom_graph(period){
 			chart1.addSeries(series);
 		
 		
-	});
+	});*/
 };					    
 
 function capitaliseFirstLetter(string)

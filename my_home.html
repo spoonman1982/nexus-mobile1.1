@@ -1,0 +1,129 @@
+<div data-role="page" id="login" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<a href="#myPanel_login" data-icon="bars" data-iconpos="notext"></a><h1>Nexus Login</h1>
+			<a href="index.html" data-icon="home" data-iconpos="notext"></a>
+		</div>
+		
+		
+		<div data-role="content" data-theme="a">
+			
+			<div style="width: 100%;">
+	        	<form action="#" id="login_form">
+					<div data-role="fieldcontain" >
+						    <label for="username">User Name</label>
+						    <input type="text" name="username" id="username" value="">
+					</div>
+					<div data-role="fieldcontain" >
+						    <label for="password">Password</label>
+						    <input type="password" name="password" id="password" value="">
+					</div>
+					<div data-role="fieldcontain" >
+							<input type="submit" value="submit" id="submitButton">
+					</div>
+				</form>
+				
+				<br/><br/>
+				
+	    	</div>
+
+		</div>
+		
+	<div data-role="panel" id="myPanel_login" data-display="overlay">
+		<ul data-role="listview" id="login_menu">
+			<li><a href="index.html">Dash Board</a></li>
+			<li><a href="#">Energy</a>
+				<ul data-role="listview">
+					<li><a href="my_home.html" class="drop_down">My Home</a></li>
+						<li><a href="budget.html" class="drop_down">Budget</a></li>
+						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
+				</ul>
+			</li> 
+			<li><a href="#">Settings</a>
+			 	<ul data-role="listview">
+			 		<li><a href="#" class="drop_down">Sync Settings</a></li>
+			 		<li><a href="login.html" class="drop_down">Log Out</a></li>
+			 	</ul>
+			</li>
+		</ul>
+	</div> 
+<script> 
+
+		$(document).on('swiperight', function(event, ui){
+			$('#myPanel_login').panel('open');
+		});
+		
+	$("#logout_btn").click(function(event){
+		event.preventDefault();
+		
+		$.ajax({
+  			url: "http://localhost:8000/api/v1/user/logout/",
+			type: 'GET',
+  			data: {},
+  			success: function() {
+		        		alert("Log Out Success");
+		        	},
+		    error:	function(){
+		        		alert("Log Out Failed");
+		        	},
+			});
+	});
+
+		$("#login_form").submit(function(event) {
+
+
+				event.preventDefault();
+
+				var $form = $(this);
+
+				var f_username = $form.find("input[name='username']").val();
+				var f_password = $form.find("input[name='password']").val();
+
+			
+
+				var f_data = JSON.stringify({
+					"username": f_username,
+					"password": f_password,
+				});
+
+				$.ajax({
+					url: "http://localhost:8000/api/v1/user/login/",
+					type: 'POST',
+  					dataType: "json",
+  					processData:  false,
+  					contentType: "application/json",
+		        	data: f_data,
+		        	success: function(data) {
+		        		alert(data.username);
+		        		$.mobile.changePage("login_success.html");
+		        	},
+		        	error:	function(){
+		        		alert("Login Failed");
+		        	},
+				});
+
+				/*$.mobile.changePage( "http://127.0.0.1:8020/nexus-mobile1.1/login_success.html", 
+				{ transition: "slideup", changeHash: false });*/
+
+			});
+
+
+/*$("#login_form").on("submit",function(e) {
+    //disable the button so we can't resubmit while we wait
+    $("#submitButton",this).attr("disabled","disabled");
+		var u = $("#username", this).val();
+		var p = $("#password", this).val();
+		if(u != '' && p!= '') {
+		   $.post("http://localhost:8000/api/v1/user/login/",{username:u,password:p}, function(res) {
+        if(res == true) {
+            $.mobile.changePage("login_success.html");
+        } else {
+            navigator.notification.alert("Your login failed", function() {});
+        }
+ 	    $("#submitButton").removeAttr("disabled");
+    },"json");
+}
+return false;
+});*/
+
+</script>
+</div>
