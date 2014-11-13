@@ -4,21 +4,28 @@
 		<h1>Graphs</h1>
 		<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 		<div data-role="navbar">
-			<ul>
-				<li><a href="javascript:update_custom_graph('daily');">Today</a></li>
-				<li><a href="javascript:update_custom_graph('weekly');">Week</a></li>
-				<li><a href="javascript:update_custom_graph('monthly');">Month</a></li>
-				<li><a href="javascript:update_custom_graph('yearly');">Year</a></li>
+			<ul id="period_list">
+				<li><a href="javascript:update_period('daily');" class="active_link">Today</a></li>
+				<li><a href="javascript:update_period('weekly');" class="">Week</a></li>
+				<li><a href="javascript:update_period('monthly');" class="">Month</a></li>
+				<li><a href="javascript:update_period('yearly');" class="">Year</a></li>
 			</ul>
 		</div>
 	</div>
 	
 	<div data-role="content" data-theme="a">
 			
-			<div id="history_graph" class="prices_chart" style="min-width: 300px; width:80%;"> </div>
+			<div id="history_graph" class="prices_chart" style="width: 95%; margin:0 2% 0 2%;"> </div>
 		
 	</div>
-
+<div data-role="footer" data-position="fixed"> 
+	<div data-role="navbar">
+		<ul id="unit_list">
+			<li><a href="javascript:update_unit_type('kWh');" class="active_link">Energy</a></li>
+			<li><a href="javascript:update_unit_type('€');" class="">Cost</a></li> 
+		</ul>
+	</div><!-- /navbar -->
+</div><!-- /footer -->
 	<div data-role="panel" id="myPanel_graphs" data-display="overlay">
 		<ul data-role="listview" id="budget_menu">
 			<li><a href="index.html">Dash Board</a></li>
@@ -39,18 +46,55 @@
 		</ul>
 	</div>
 	
+	<style>
+		.active_link{
+			background-color:#0080FF !important;
+			color: #ffffff !important;
+		}
+	</style>
+	
 	<script>
 			
 	$(document).on('swiperight', function(event, ui){
 		$('#myPanel_graphs').panel('open');
 	});
 	
+	$("ul#period_list li a").on("click", function(){
+        $(this).addClass("active_link");
+        $('ul#period_list li a').not(this).removeClass("active_link");
+	});
+	
+	$("ul#unit_list li a").click( function(){
+		$(this).addClass("active_link");
+      	$('ul#unit_list li a').not(this).removeClass("active_link");
+	});
+
+	
    	days = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 
 	today = new Date();
 	
+	var current_unit_type = "kWh";
+	var current_period = "daily";
 
-function update_custom_graph(period){
+function update_unit_type(overide_unit_type){
+	current_unit_type = overide_unit_type;
+	
+	update_custom_graph(current_period, current_unit_type);
+	
+}
+
+function update_period(overide_unit_type){
+	current_period = overide_unit_type;
+	
+	update_custom_graph(current_period, current_unit_type);
+}
+	
+
+function update_custom_graph(period, unit_type){
+	
+	prev_call_period = period;
+	
 	chart1 = new Highcharts.Chart({
         chart: {
            	renderTo: 'history_graph',
@@ -116,7 +160,7 @@ function update_custom_graph(period){
                 }
             },
             title: {
-                text: "€",
+                text: unit_type,
                 rotation: 0,
                 style: {
                     color: "#808080",
@@ -136,18 +180,32 @@ function update_custom_graph(period){
     });
     
 	$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	
-	
-	    while(chart1.series.length > 0)
-	      chart1.series[0].remove(true);
-	    var dataArray = new Array();
-	    for (var i = 0; i < data.readings.length; i++){
-	      var item = {
-	        x: Date.parse(data.readings[i].time),
-	        y: parseFloat(data.readings[i].kwh),
-	        color: '#FFA500'
-	      };
+
+	while(chart1.series.length > 0)
+		chart1.series[0].remove(true);
+	      
+	var dataArray = new Array();
+	var item ;
+
+	for (var i = 0; i < data.readings.length; i++){
+		
+		if(unit_type == "kWh"){	    	
+		      item = {
+			        x: Date.parse(data.readings[i].time),
+			        y: parseFloat(data.readings[i].kwh),
+			        color: '#FFA500',
+			       };
+		       }
+	     else if(unit_type == "€"){
+		      item = {
+			        x: Date.parse(data.readings[i].time),
+			        y: parseFloat(data.readings[i].cost),
+			        color: '#FFA500',
+			      };
+		      };
+		      	  
 	      dataArray.push(item);
-	    }
+	};
 	        
 	        var data_type = "Electricity Use - Monthly";
 	        var series = {
@@ -160,179 +218,8 @@ function update_custom_graph(period){
 		
 	});
 };					    
-					    
-/*$.get('/data/history/1/day/', function(data){
-	
-        while(chart1.series.length > 0)
-    		chart1.series[0].remove(true);
-		var dataArray = new Array();
-		for (var i = 0; i < data.readings.length; i++){
-			var item = {
-				x: Date.parse(data.readings[i].time),
-				y: parseFloat(data.readings[i].kwh),
-				color: '#FFA500'
-			} 
-			dataArray.push(item)
-		}
-        
-        var data_type = "Electricity Use"
-        var series = {
-            name: data_type,
-            data: dataArray,
-            pointInterval: 3600 * 1000}
-		chart1.addSeries(series);
-	});
-today = new Date();
-	
-chart1 = new Highcharts.Chart({
-        chart: {
-                renderTo: 'history_graph',
-                type: 'column',
-                spacingTop: 50,
-            },
 
-            colors: [
-             '#ffa500',  '#0d233a'
-             ],
-        xAxis: {
-            showFirstLabel: false,
-            tickInterval: 3*3600*1000,
-            type: "datetime",
-            dateTimeLabelFormats: {  
-                hour: '%l%P'   
-            },
-            labels: {
-                y : 25,
-                style: {
-                    fontSize: '0.7em',
-                    color: "#14140A",
-                    fontWeight: "bold",
-                    fontFamily: "arial",
-                },
-            },
-        },
-
-        title: {
-                text: 'Electricity Use Today',
-                floating: true,
-                align: 'center',
-                x: 0,
-                y: -65,
-                style:{
-                    color: '#14140A',
-                    fontSize: '1em',
-                    fontWeight: 'bold',
-                    fontFamily: 'arial'
-                    }
-        },
-
-        subtitle: {
-                floating: true,
-                align: 'center',
-                x: 0,
-                y: -40,
-                style:{
-                        color: '#14140A',
-                        fontSize: '0.8em',
-                        fontFamily: 'arial'
-                    }
-        },
-        legend:{       
-            symbolHeight: 15,
-            symbolWidth: 15,
-            symbolPadding: 10,
-            borderColor: '#ffffff',
-            padding: 3,
-            itemMarginTop: 25,
-            itemMarginBottom: 25,
-            itemStyle: {
-                lineHeight: '20px',
-                font: 'bold 1.6em arial, sans-serif',
-            },
-        },
-        yAxis: {
-            min: 0,
-            allowDecimals: true,
-            gridLineColor: "#B9B9B9",
-            labels: {
-                style: {
-                    fontSize: '1.6em',
-                    color: "#14140A",
-                    fontWeight: "bold",
-                    fontFamily: "arial",
-                }
-            },
-            title: {
-                text: "kwh",
-                style: {
-                    color: "#14140A",
-                    fontWeight: "bold",
-                    fontSize: "1.6em"
-                    }    
-                }
-            },
-        plotOptions: {
-            column: {
-                //colorByPoint: true,
-                pointPadding: 0.05,
-                groupPadding: 0.05,
-                pointPlacement: "between",
-            }
-        }
-     });
-	//Update data on graph
-
-/* month_text = '{ "type":"month", readings: [{kwh: "0.000", cost: "0.00", time: "2014-10-01T00:00:00"}' +
-'{kwh: "1.000",cost: "0.00",time: "2014-10-02T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-03T00:00:00"},' +
-'{kwh: "2.000",cost: "0.00",time: "2014-10-04T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-05T00:00:00"},' +
-'{kwh: "3.000",cost: "0.00",time: "2014-10-06T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-07T00:00:00"},' +
-'{kwh: "4.000",cost: "0.00",time: "2014-10-08T00:00:00"},{kwh: "8.000",cost: "0.00",time: "2014-10-09T00:00:00"},' + 
-'{kwh: "1.000",cost: "0.00",time: "2014-10-10T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-11T00:00:00"},' + 
-'{kwh: "2.000",cost: "0.00",time: "2014-10-12T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-13T00:00:00"},' + 
-'{kwh: "3.000",cost: "0.00",time: "2014-10-14T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-15T00:00:00"},' + 
-'{kwh: "4.000",cost: "0.00",time: "2014-10-16T00:00:00"},{kwh: "8.000",cost: "0.00",time: "2014-10-17T00:00:00"},' + 
-'{kwh: "1.000",cost: "0.00",time: "2014-10-18T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-19T00:00:00"},' + 
-'{kwh: "2.000",cost: "0.00",time: "2014-10-20T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-21T00:00:00"},' + 
-'{kwh: "3.000",cost: "0.00",time: "2014-10-22T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-23T00:00:00"},' + 
-'{kwh: "4.000",cost: "0.00",time: "2014-10-24T00:00:00"},{kwh: "8.000",cost: "0.00",time: "2014-10-25T00:00:00"},' + 
-'{kwh: "1.000",cost: "0.00",time: "2014-10-26T00:00:00"},{kwh: "5.000",cost: "0.00",time: "2014-10-27T00:00:00"},' + 
-'{kwh: "2.000",cost: "0.00",time: "2014-10-28T00:00:00"},{kwh: "6.000",cost: "0.00",time: "2014-10-29T00:00:00"},' + 
-'{kwh: "3.000",cost: "0.00",time: "2014-10-30T00:00:00"},{kwh: "7.000",cost: "0.00",time: "2014-10-31T00:00:00"}]}';
-
-month_data = JSON.parse(month_text);
-	
-function update_custom_graph(){
-
-        while(chart1.series.length > 0)
-    		chart1.series[0].remove(true);
-		var dataArray = new Array();
-		for (var i = 0; i < obj.readings.length; i++){
-			var item = {
-				x: Date.parse(month_data.readings[i].time),
-				y: parseFloat(month_data.readings[i].kwh),
-				color: '#FFA500'
-			}; 
-			dataArray.push(item);
-		}
-        
-        var data_type = "Electricity Use - All Buildings";
-        var series = {
-            name: data_type,
-            data: dataArray,
-            pointInterval: 3600 * 1000
-           };
-		chart1.addSeries(series);
-};*/
-	
-
-
-
-					    
-					    
-					    
-					    
-					    
-					    
-					    		
+update_custom_graph('daily', 'kWh');					    
+				    		
 	</script>
 </div><!-- /end of page -->		
