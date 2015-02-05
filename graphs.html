@@ -34,15 +34,16 @@
 			<li><a href="index.html">Dash Board</a></li>
 			<li><a href="#">Energy</a>
 				<ul data-role="listview">
-
-						<li><a href="budget.html" class="drop_down">Budget</a></li>
-						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
+					<li><a href="my_home.html" class="drop_down">My Home</a></li>
+					<li><a href="budget.html" class="drop_down">Budget</a></li>
+					<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
 				</ul>
 			</li> 
 			<li><a href="#">Settings</a>
 			 	<ul data-role="listview">
 			 		<li><a href="#" class="drop_down">Sync Settings</a></li>
 			 		<li><a href="#" class="drop_down">Log Out</a></li>
+			 		<li><a href="sign_up.html" class="drop_down">Sign Up</a></li>
 			 	</ul>
 			</li>
 		</ul>
@@ -206,7 +207,7 @@ function update_custom_graph(period, unit_type){
     
 
 	/*$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	*/
-	$.get("/themes/js/" + period + ".json", function(data){
+	$.get("../themes/js/" + period + ".json", function(data){
 
 	while(chart1.series.length > 0)
 		chart1.series[0].remove(true);
