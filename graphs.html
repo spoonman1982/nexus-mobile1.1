@@ -207,43 +207,44 @@ function update_custom_graph(period, unit_type){
     
 
 	/*$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	*/
-	$.get("/nexus-mobile1.1/themes/js/" + period + ".json", function(data){
+	$.ajax({
+		url:"/nexus-mobile1.1/themes/js/" + period + ".json",
+		type:"GET",
+		success: function(data){
 
-	while(chart1.series.length > 0)
-		chart1.series[0].remove(true);
-	      
-	var dataArray = new Array();
-	var item ;
-
-	for (var i = 0; i < data.readings.length; i++){
+			while(chart1.series.length > 0)
+				chart1.series[0].remove(true);
+			      
+			var dataArray = new Array();
+			var item ;
 		
-		if(unit_type == "kWh"){	    	
-		      item = {
-			        x: Date.parse(data.readings[i].time),
-			        y: parseFloat(data.readings[i].kwh),
-			        color: '#FFA500',
-			       };
-		       }
-	     else if(unit_type == "€"){
-		      item = {
-			        x: Date.parse(data.readings[i].time),
-			        y: parseFloat(data.readings[i].cost),
-			        color: '#FFA500',
-			      };
-		      };
-		      	  
-	      dataArray.push(item);
-	};
-	        
-	        var data_type = "Electricity Use - Monthly";
-	        var series = {
-	            name: data_type,
-	            data: dataArray,
-	            pointInterval: 3600 * 1000
-	           };
-			chart1.addSeries(series);
-		
-		
+			for (var i = 0; i < data.readings.length; i++){
+				
+				if(unit_type == "kWh"){	    	
+				      item = {
+					        x: Date.parse(data.readings[i].time),
+					        y: parseFloat(data.readings[i].kwh),
+					        color: '#FFA500',
+					       };
+				       }
+			     else if(unit_type == "€"){
+				      item = {
+					        x: Date.parse(data.readings[i].time),
+					        y: parseFloat(data.readings[i].cost),
+					        color: '#FFA500',
+					      };
+				      }; 	  
+			      dataArray.push(item);
+			};
+		        
+		        var data_type = "Electricity Use - Monthly";
+		        var series = {
+		            name: data_type,
+		            data: dataArray,
+		            pointInterval: 3600 * 1000
+		           };
+				chart1.addSeries(series);
+		},
 	});
 };					    
 
