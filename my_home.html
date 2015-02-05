@@ -1,7 +1,7 @@
-<div data-role="page" id="history_budget" data-theme="a">
+<div data-role="page" id="my_home" data-theme="a">
 	<div data-role="header" data-position="fixed">
-		<a href="#myPanel_history_budget" data-icon="bars" data-iconpos="notext"></a>
-				<h1>History Budget</h1>
+		<a href="#myPanel_my_home" data-icon="bars" data-iconpos="notext"></a>
+				<h1>My Home</h1>
 		<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 
 	</div>
@@ -9,8 +9,8 @@
 		<li data-role="list-divider">My Home</li>
 
 	</ul>
-	<div data-role="panel"  id="myPanel_history_budget" data-display="overlay" >
-		<ul data-role="listview" id="history_budget_menu">
+	<div data-role="panel"  id="myPanel_my_home" data-display="overlay" >
+		<ul data-role="listview" id="my_home_menu">
 			<li><a href="index.html">Dash Board</a></li>
 			<li><a href="#">Energy</a>
 				<ul data-role="listview">
@@ -29,13 +29,12 @@
 		</ul>
 	</div><!-- panel end -->
 	<script>
-
-	$('#history_budget_menu').tendina({
-	  	speed: 400,
-	});
 	$(document).on('swiperight', function(event, ui){
-		$('#myPanel_history_budget').panel('open');
+		$('#myPanel_my_home').panel('open');
 	});
+		$('#my_home_menu').tendina({
+	  		speed: 400,
+		});
 
 	</script>
 </div><!-- /end of page -->		

@@ -45,10 +45,10 @@
 				<li><a href="index.html">Dash Board</a></li>
 				<li><a href="#">Energy</a>
 					<ul data-role="listview">
-						<li><a href="my_home.html" class="drop_down">My Home</a></li>
+
 						<li><a href="budget.html" class="drop_down">Budget</a></li>
 						<li><a href="graphs.html" class="drop_down">Graphs</a></li>
-						<li><a href="poll_list.html" class="drop_down">Polls</a></li>
+
 					</ul>
 				</li> 
 			 	<li><a href="#">Settings</a>
@@ -62,13 +62,13 @@
 		</div>
 		<script>
 		
-	$('#menu').tendina({
+	$('#sign_up_menu').tendina({
   		speed: 400,
 	});
-		
-		$(document).on('swiperight', function(event, ui){
-			$('#myPanel_sign_up').panel('open');
-		});
+
+	$(document).on('swiperight', function(event, ui){
+		$('#myPanel_sign_up').panel('open');
+	});
 
 		
 

@@ -30,11 +30,11 @@
 	</div><!-- /navbar -->
 </div><!-- /footer -->
 	<div data-role="panel" id="myPanel_graphs" data-display="overlay">
-		<ul data-role="listview" id="budget_menu">
+		<ul data-role="listview" id="graphs_menu">
 			<li><a href="index.html">Dash Board</a></li>
 			<li><a href="#">Energy</a>
 				<ul data-role="listview">
-					<li><a href="my_home.html" class="drop_down">My Home</a></li>
+
 						<li><a href="budget.html" class="drop_down">Budget</a></li>
 						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
 				</ul>
@@ -62,6 +62,9 @@
 	</style>
 	
 	<script>
+	$('#graphs_menu').tendina({
+  		speed: 400,
+	});
 	
 	$(document).on('swiperight', function(event, ui){
 		$('#myPanel_graphs').panel('open');
