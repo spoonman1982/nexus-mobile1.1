@@ -4,19 +4,22 @@
 		<h1>Graphs</h1>
 		<a href="index.html" data-icon="home" data-iconpos="notext"></a>
 		<div data-role="navbar">
+
 			<ul id="period_list">
 				<li><a href="javascript:update_period('daily');" class="active_link">Today</a></li>
 				<li><a href="javascript:update_period('weekly');" class="">Week</a></li>
 				<li><a href="javascript:update_period('monthly');" class="">Month</a></li>
 				<li><a href="javascript:update_period('yearly');" class="">Year</a></li>
+
 			</ul>
 		</div>
 	</div>
 	
 	<div data-role="content" data-theme="a">
 			
+
 			<div id="history_graph" class="prices_chart" style="width: 95%; margin:0 2% 0 2%;"> </div>
-		
+
 	</div>
 <div data-role="footer" data-position="fixed"> 
 	<div data-role="navbar">
@@ -36,7 +39,6 @@
 						<li><a href="graphs.html" class="drop_down">Graphs</a></li>	
 				</ul>
 			</li> 
-			<li><a href="history.html">History</a></li>
 			<li><a href="#">Settings</a>
 			 	<ul data-role="listview">
 			 		<li><a href="#" class="drop_down">Sync Settings</a></li>
@@ -45,6 +47,12 @@
 			</li>
 		</ul>
 	</div>
+		<style>
+			.active_link{
+				background-color:#0080FF !important;
+				color: #ffffff !important;
+			}
+		</style>
 	
 	<style>
 		.active_link{
@@ -54,11 +62,12 @@
 	</style>
 	
 	<script>
-			
+	
 	$(document).on('swiperight', function(event, ui){
 		$('#myPanel_graphs').panel('open');
 	});
 	
+
 	$("ul#period_list li a").on("click", function(){
         $(this).addClass("active_link");
         $('ul#period_list li a').not(this).removeClass("active_link");
@@ -67,6 +76,7 @@
 	$("ul#unit_list li a").click( function(){
 		$(this).addClass("active_link");
       	$('ul#unit_list li a').not(this).removeClass("active_link");
+
 	});
 
 	
@@ -91,22 +101,24 @@ function update_period(overide_unit_type){
 }
 	
 
+
 function update_custom_graph(period, unit_type){
 	
 	prev_call_period = period;
+
 	
 	chart1 = new Highcharts.Chart({
         chart: {
            	renderTo: 'history_graph',
            	type: 'column',
-            spacingTop: 110,
+            spacingTop: 80,
             },
         title: {
 	        text: 'Electricity Use - ' + period,
             floating: true,
 	        align: 'center',
 	        x: 0,
-	        y: -65,
+	        y: -45,
 	        style:{
 	            color: '#14140A',
 	            fontSize: '1em',
@@ -119,7 +131,7 @@ function update_custom_graph(period, unit_type){
                	floating: true,
                 align: 'center',
                 x: 0,
-                y: -40,
+                y: -30,
                 style:{
                 	color: '#14140A',
                     fontSize: '0.9em',
@@ -148,6 +160,16 @@ function update_custom_graph(period, unit_type){
             },
         legend: {
             enabled: false
+        },
+        tooltip: {
+            shared: true,    
+            formatter: function () {
+                  var result = '<b>' + Highcharts.dateFormat('%b %e, %Y', this.x) + '</b>';
+                    $.each(this.points, function (i, datum) {
+                        result += '<br />' + Math.round(datum.y) + ' Euro';
+                    });
+                    return result;
+            }
         },
         yAxis: {
             min: 0,
@@ -179,6 +201,7 @@ function update_custom_graph(period, unit_type){
         }
     });
     
+
 	$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	
 
 	while(chart1.series.length > 0)
@@ -218,6 +241,7 @@ function update_custom_graph(period, unit_type){
 		
 	});
 };					    
+
 
 update_custom_graph('daily', 'kWh');					    
 				    		
