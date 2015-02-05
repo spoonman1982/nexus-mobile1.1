@@ -89,7 +89,8 @@
 	today = new Date();
 	
 	var current_unit_type = "kWh";
-	var current_period = "daily";
+	var current_period = "daily"; 
+	var origin_name = window.location.origin;
 
 function update_unit_type(overide_unit_type){
 	current_unit_type = overide_unit_type;
@@ -192,9 +193,9 @@ function update_custom_graph(period, unit_type){
                     color: "#808080",
                     fontWeight: "bold",
                     fontSize: "12px"
-                }    
-            }
-        },
+                	}    
+            	}
+         	},
         plotOptions: {
             column: {
                 //colorByPoint: true,
@@ -208,7 +209,7 @@ function update_custom_graph(period, unit_type){
 
 	/*$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	*/
 	$.ajax({
-		url:"/nexus-mobile1.1/themes/js/" + period + ".json",
+		url: origin_name  + "/nexus-mobile1.1/themes/js/" + period + ".json",
 		type:"GET",
 		success: function(data){
 
