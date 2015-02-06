@@ -209,7 +209,7 @@ function update_custom_graph(period, unit_type){
 
 	/*$.get("http://127.0.0.1:8020/nexus-mobile1.1/themes/js/" + period + ".json", function(data){	*/
 	$.ajax({
-		url: "http://localhost:8000/" + period + "/",
+		url: "http://192.168.1.9/" + period + "/",
 		type:"GET",
 		success: function(data){
 
