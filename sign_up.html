@@ -72,7 +72,7 @@ $("#sign_up_form").submit(function(event) {
 
 
 	$.ajax({
-		url: "http://localhost:8000/accounts/auth/",
+		url:  "http://192.168.1.15:8000/accounts/auth/"/* "http://localhost:8000/accounts/auth/"*/,
 		type: 'POST',
   		dataType: "json",
   		contentType: "application/json",
@@ -81,9 +81,6 @@ $("#sign_up_form").submit(function(event) {
 		    /* PhonGap Local Storage for mobile device*/
 		    localStorage.setItem("api_key", data.api_key);
 		    localStorage.setItem("username", data.username);
-		    /*Local machine cookies*/
-		    /*setCookie("api_key", data.api_key, 365);
-		    setCookie("username", data.username, 365);*/
 		},
 	});
 });
